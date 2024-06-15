@@ -134,3 +134,4 @@ source ~/shell/key-bindings.bash
 
 # Set up zoxide
 eval "$(zoxide init bash)"
+. "$HOME/.cargo/env"
