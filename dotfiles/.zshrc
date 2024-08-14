@@ -107,7 +107,8 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
 # ~/.zshrc
 
 eval "$(starship init zsh)"
-
+#
+#
 # Set up fzf key bindings and fuzzy completion
 # eval "$(fzf)"
 source ~/shell/completion.zsh

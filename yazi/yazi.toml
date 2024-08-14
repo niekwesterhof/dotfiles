@@ -1,0 +1,5 @@
+[manager]
+ratio=[1,4,2]
+show_hidden=true
+show_symlink=true
+
