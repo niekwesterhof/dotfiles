@@ -1,9 +1,9 @@
 -- [[config g for init.lua]]
-require 'kickstart.config.g'
+require 'config.g'
 -- [[config opt for init.lua]]
-require 'kickstart.config.opt'
+require 'config.opt'
 -- [[confgi keymap for init.lua]]
-require 'kickstart.config.keymap'
+require 'config.keymap'
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -13,7 +13,7 @@ require 'kickstart.config.keymap'
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
   end,
@@ -59,31 +59,31 @@ require('lazy').setup {
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
 
   -- NOTE: Plugins can specify dependencies.
-  -- HACK: require 'kickstart.plugins.zoxide',
-  require 'kickstart.plugins.breadcrumbs',
-  require 'kickstart.plugins.which-key',
-  require 'kickstart.plugins.auto-complete',
-  require 'kickstart.plugins.obsidian',
-  require 'kickstart.plugins.telescope',
-  require 'kickstart.plugins.debug',
-  require 'kickstart.plugins.indent_line',
-  require 'kickstart.plugins.lint',
-  require 'kickstart.plugins.lsp',
-  require 'kickstart.plugins.autopairs',
-  require 'kickstart.plugins.neo-tree',
-  require 'kickstart.plugins.gitsigns',
-  require 'kickstart.plugins.lua-line',
-  require 'kickstart.plugins.catppuccin',
-  require 'kickstart.plugins.noice',
-  require 'kickstart.plugins.bufferline',
-  require 'kickstart.plugins.treesitter',
-  require 'kickstart.plugins.mini',
-  require 'kickstart.plugins.todo-comments',
-  require 'kickstart.plugins.tokyo-night',
-  require 'kickstart.plugins.auto-format',
-  require 'kickstart.plugins.comment',
-  require 'kickstart.plugins.alfa-nvim',
-  -- require 'kickstart.plugins.markdown',
+  -- HACK: require 'plugins.zoxide',
+  require 'plugins.breadcrumbs',
+  require 'plugins.which-key',
+  require 'plugins.auto-complete',
+  require 'plugins.obsidian',
+  require 'plugins.telescope',
+  require 'plugins.debug',
+  require 'plugins.indent_line',
+  require 'plugins.lint',
+  require 'plugins.lsp',
+  require 'plugins.autopairs',
+  require 'plugins.neo-tree',
+  require 'plugins.gitsigns',
+  require 'plugins.lua-line',
+  require 'plugins.catppuccin',
+  require 'plugins.noice',
+  require 'plugins.bufferline',
+  require 'plugins.treesitter',
+  require 'plugins.mini',
+  require 'plugins.todo-comments',
+  require 'plugins.tokyo-night',
+  require 'plugins.auto-format',
+  require 'plugins.comment',
+  require 'plugins.alfa-nvim',
+  -- require 'plugins.markdown',
 }
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

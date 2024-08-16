@@ -1,9 +1,0 @@
-
-alias zshconfig="nvim ~/.zshrc"
-alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias ll="ls -al"
-alias python="python3"
-alias dotfiles="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
-alias c='clear'
-alias sz='source ~/.zshrc'
-alias on='~/bash/ObsidianNew.sh'

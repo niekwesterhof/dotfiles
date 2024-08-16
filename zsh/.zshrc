@@ -10,7 +10,7 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-source ~/.aliases.zshrc
+source ~/dotfiles/aliases/.aliases
 
 # ~/.zshrc
 
@@ -25,8 +25,11 @@ function yy() {
 
 eval "$(starship init zsh)"
 # Set up fzf key bindings and fuzzy completion
-source ~/shell/completion.zsh
-source ~/shell/key-bindings.zsh
+source ~/dotfiles/zsh/completion.zsh
+source ~/dotfiles/zsh/key-bindings.zsh
+# export FZF_DEFAULT_COMMAND="find . -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
+# export FZF_DEFAULT_COMMAND='--hidden --files '"'"'!.git/'"'"
+export FZF_DEFAULT_COMMAND='ag -g ""'
 eval "$(zoxide init zsh)"
 
 . "$HOME/.atuin/bin/env"

@@ -1,26 +1,19 @@
+-- https://github.com/nvim-neo-tree/neo-tree.nvim
+
 return {
   'nvim-neo-tree/neo-tree.nvim',
-  branch = 'v3.x',
+  version = '*',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'nvim-tree/nvim-web-devicons',
+    'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
   },
-
   config = function()
-    vim.keymap.set('n', '<C-n>', ':Neotree filesystem left <CR>')
     require('neo-tree').setup {
-      cmd = 'Neotree',
-      keys = {
-        { '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
-      },
-      opts = {
-        filesystem = {
-          window = {
-            mappings = {
-              ['\\'] = 'close_window',
-            },
-          },
+      filesystem = {
+        filtered_items = {
+          hide_dotfiles = false,
+          hide_ = false,
         },
       },
     }
