@@ -38,20 +38,20 @@ mkdir -p ~/.config/lazygit
 ln -s ~/dotfiles/lazygit/config.yml ~/.config/lazygit/config.yml
 
 # symlink for nvim
-[ -d ~/.config/nvim ] && mv -r ~/.config/nvim ~/old_config/nvim
+[ -d ~/.config/nvim ] && mv ~/.config/nvim ~/old_config/nvim
 ln -s ~/dotfiles/nvim ~/.config/nvim
 
 # symlink for superfile
-[ -d ~/.config/superfile ] && mv -r ~/.config/superfile ~/old_config/superfile
+[ -d ~/.config/superfile ] && mv ~/.config/superfile ~/old_config/superfile
 ln -s ~/dotfiles/superfile ~/.config/superfile
 # symlink for tmux
 [ -f ~/.tmux.conf ] && mv ~/.tmux.conf ~/old_config/.tmux.conf
 ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 
 # symlink for ulauncher
-[ -d ~/.config/ulauncher ] && mv -r ~/.config/ulauncher ~/old_config/ulauncher
+[ -d ~/.config/ulauncher ] && mv ~/.config/ulauncher ~/old_config/ulauncher
 ln -s ~/dotfiles/ulauncher ~/.config/ulauncher
 
 # symlink for yazi
-[ -d ~/.config/yazi ] && mv -r ~/.config/yazi ~/old_config/yazi
+[ -d ~/.config/yazi ] && mv ~/.config/yazi ~/old_config/yazi
 ln -s ~/dotfiles/yazi ~/.config/yazi
