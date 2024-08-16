@@ -39,5 +39,5 @@ eval "$(atuin init zsh)"
 
 if [ -z "$TMUX"  ] 
 then
-	{tmux attach ||exec ~/bash/setupTmux.sh}
+	{tmux attach ||exec ~/dotfiles/scripts/setupTmux.sh}
 fi

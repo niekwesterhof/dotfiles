@@ -129,8 +129,8 @@ export NVM_DIR="$HOME/.nvm"
 
 # Set up fzf key bindings and fuzzy completion
 # eval "$(fzf)"
-source ~/shell/completion.bash
-source ~/shell/key-bindings.bash
+source ~/dotfiles/bash/completion.bash
+source ~/dotfiles/bash/key-bindings.bash
 
 # Set up zoxide
 eval "$(zoxide init bash)"
