@@ -5,7 +5,7 @@
 
 # make a directory for old config files to store
 cd ~
-mkdir -p ~/Old_config
+mkdir -p ~/old_config
 
 # symlink for atuin
 mkdir -p ~/.config/atuin
@@ -34,7 +34,7 @@ ln -s ~/dotfiles/.ssh/config ~/.ssh/config
 
 # symlink for lazygit
 mkdir -p ~/.config/lazygit
-[ -f ~/.config/lazygit/config.yml ] && mv ~/.config/lazygit/config.yml ~/old_config/lazygit_config.yml
+[ -f ~/.config/lazygit/config.yml ] && mv ~/.config/lazygit/config.yml ~/old_config/lazy_config.yml
 ln -s ~/dotfiles/lazygit/config.yml ~/.config/lazygit/config.yml
 
 # symlink for nvim
