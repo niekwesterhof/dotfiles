@@ -34,7 +34,7 @@ ln -s ~/dotfiles/.ssh/config ~/.ssh/config
 
 # symlink for lazygit
 mkdir -p ~/.config/lazygit
-[ -f ~/.config/lazygit/config.yml ] && mv ~/.config/lazygit/config.yml ~/old_config/lazygit/config.yml
+[ -f ~/.config/lazygit/config.yml ] && mv ~/.config/lazygit/config.yml ~/old_config/lazygit_config.yml
 ln -s ~/dotfiles/lazygit/config.yml ~/.config/lazygit/config.yml
 
 # symlink for nvim
