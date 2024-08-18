@@ -83,6 +83,9 @@ require('lazy').setup {
   require 'plugins.auto-format',
   require 'plugins.comment',
   require 'plugins.alfa-nvim',
+  require 'plugins.rose-pine',
+  require 'plugins.dracula',
+  require 'plugins.nord',
   -- require 'plugins.markdown',
 }
 -- The line beneath this is called `modeline`. See `:help modeline`
