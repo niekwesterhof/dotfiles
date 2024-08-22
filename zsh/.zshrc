@@ -37,7 +37,6 @@ eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
 eval "$(atuin init zsh)"
 
-if [ -z "$TMUX"  ] 
-then
-	{tmux attach ||exec ~/dotfiles/scripts/setupTmux.sh}
+if [ -z "$TMUX" ]; then
+	{tmux attach || exec ~/dotfiles/scripts/setupTmux.sh}
 fi

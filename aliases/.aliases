@@ -6,8 +6,12 @@ alias python="python3"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
 alias c='clear'
 alias sz='source ~/.zshrc'
-alias on='~/bash/ObsidianNew.sh'
+alias on='~/dotfiles/scripts/ObsidianNew.sh'
 alias fn='nvim $(fzf --preview="batcat --color=always --style=numbers {}")'
 alias fan='nvim ~/$(cd ~ && fzf --preview="batcat --color=always --style=numbers {}")'
 alias run='sh ~/$(cd ~ && fzf --preview="batcat --color=always --style=numbers {}")'
 alias fon='link=${PWD} && cd ~/Documents/Vault && nvim && cd $link'
+alias ngd='nvim "+Telescope live_grep search_dirs={'~/dotfiles'}"'
+alias nfd='nvim "+Telescope find_files search_dirs={'~/dotfiles'}"'
+alias ngo='nvim "+Telescope live_grep search_dirs={'~/Documents/Vault'}"'
+alias nfo='nvim "+Telescope find_files search_dirs={'~/Documents/Vault'}"'

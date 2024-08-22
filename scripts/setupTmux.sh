@@ -13,6 +13,9 @@ tmux new-window
 tmux rename-window SecondBrain
 tmux send-keys -t 0 'z Vault' C-m
 tmux send-keys -t 0 'clear' C-m
+tmux new-window
+tmux rename-window Yazi
+tmux send-keys -t 0 'yazi' C-m
 tmux select-window -t Main
 tmux select-pane -t 0
 tmux attach -t Niek

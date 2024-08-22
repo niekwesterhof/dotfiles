@@ -3,7 +3,8 @@ return {
   config = function()
     require('lualine').setup {
       options = {
-        theme = 'dracula',
+        -- theme = vim.g.colors_name,
+        theme = 'auto',
       },
     }
   end,

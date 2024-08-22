@@ -4,7 +4,6 @@ require 'config.g'
 require 'config.opt'
 -- [[confgi keymap for init.lua]]
 require 'config.keymap'
-
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -53,13 +52,12 @@ require('lazy').setup {
   },
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-
   -- NOTE: Plugins can also be added by using a table,
 
-  -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
+  -- NOTE: Plugins can also be configured to run Lua code hen they are loaded.
 
   -- NOTE: Plugins can specify dependencies.
-  -- HACK: require 'plugins.zoxide',
+  require 'plugins.zoxide',
   require 'plugins.breadcrumbs',
   require 'plugins.which-key',
   require 'plugins.auto-complete',
@@ -70,7 +68,7 @@ require('lazy').setup {
   require 'plugins.lint',
   require 'plugins.lsp',
   require 'plugins.autopairs',
-  require 'plugins.neo-tree',
+  -- require 'plugins.neo-tree',
   require 'plugins.gitsigns',
   require 'plugins.lua-line',
   require 'plugins.catppuccin',
@@ -80,12 +78,21 @@ require('lazy').setup {
   require 'plugins.mini',
   require 'plugins.todo-comments',
   require 'plugins.tokyo-night',
+  require 'plugins.hop',
   require 'plugins.auto-format',
   require 'plugins.comment',
+  -- require 'plugins.oil',
   require 'plugins.alfa-nvim',
   require 'plugins.rose-pine',
+  require 'plugins.rainbow-parentheses',
   require 'plugins.dracula',
   require 'plugins.nord',
+  require 'plugins.begood',
+  require 'plugins.gruvbox',
+  require 'plugins.dracula',
+  require 'plugins.themery',
+  require 'plugins.cheatsheet',
+  require 'plugins.yazi',
   -- require 'plugins.markdown',
 }
 -- The line beneath this is called `modeline`. See `:help modeline`

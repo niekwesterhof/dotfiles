@@ -31,6 +31,9 @@ return { -- Autoformat
       -- You can use a sub-list to tell conform to run *until* a formatter
       -- is found.
       javascript = { { 'prettierd', 'prettier' } },
+      sh = { 'prettierd', 'prettier' },
+      html = { 'prettierd', 'prettier' },
+      css = { 'prettierd', 'prettier' },
     },
   },
 }
