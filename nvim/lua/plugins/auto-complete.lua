@@ -39,9 +39,9 @@ return { -- Autocompletion
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
     luasnip.config.setup {}
-
+    -- require('basedpyright').basedpyright.setup {}
     require('lspconfig').tsserver.setup {}
-
+    require('lspconfig').bashls.setup {}
     cmp.setup {
       snippet = {
         expand = function(args)

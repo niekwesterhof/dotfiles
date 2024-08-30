@@ -27,13 +27,13 @@ return {
       nvim_cmp = true,
       min_char = 2,
     },
-    templates = {
-      folder = '~/Documents/Vault/99 - Meta/00 - Templates',
-      date_format = '%Y-%m-%d',
-      time_format = '%H:%M:%S',
-    },
+    -- templates = {
+    --   folder = '~/Documents/Vault/99 - Meta/00 - Templates',
+    --   date_format = '%Y-%m-%d',
+    --   time_format = '%H:%M:%S',
+    -- },
     ui = {
-      enable = true,
+      enable = false,
     },
   },
 }

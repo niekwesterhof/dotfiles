@@ -58,7 +58,7 @@ return { -- Collection of various small independent plugins/modules
     require('mini.cursorword').setup()
     require('mini.trailspace').setup()
     require('mini.move').setup()
-    -- require('mini.jump').setup()
+    require('mini.jump').setup()
     -- require('mini.jump2d').setup()
     -- require('mini.pairs').setup()
     -- Simple and easy statusline.

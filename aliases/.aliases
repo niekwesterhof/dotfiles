@@ -1,4 +1,4 @@
-
+alias blue="sudo apt update && sudo apt install pulseaudio"
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias ll="ls -al"
@@ -8,10 +8,12 @@ alias c='clear'
 alias sz='source ~/.zshrc'
 alias on='~/dotfiles/scripts/ObsidianNew.sh'
 alias fn='nvim $(fzf --preview="batcat --color=always --style=numbers {}")'
+alias fo='sh ~/dotfiles/scripts/fzf_vault.sh'
 alias fan='nvim ~/$(cd ~ && fzf --preview="batcat --color=always --style=numbers {}")'
 alias run='sh ~/$(cd ~ && fzf --preview="batcat --color=always --style=numbers {}")'
 alias fon='link=${PWD} && cd ~/Documents/Vault && nvim && cd $link'
-alias ngd='nvim "+Telescope live_grep search_dirs={'~/dotfiles'}"'
-alias nfd='nvim "+Telescope find_files search_dirs={'~/dotfiles'}"'
-alias ngo='nvim "+Telescope live_grep search_dirs={'~/Documents/Vault'}"'
-alias nfo='nvim "+Telescope find_files search_dirs={'~/Documents/Vault'}"'
+alias ngd='sh ~/dotfiles/scripts/telescope_live_grep_dotfiles.sh'
+alias ngo='sh ~/dotfiles/scripts/telescope_live_grep_vault.sh'
+alias nfd='sh ~/dotfiles/scripts/telescope_find_files_dotfiles.sh'
+alias nfo='sh ~/dotfiles/scripts/telescope_find_files_vault.sh'
+alias nf='sh ~/dotfiles/scripts/telescope_find_files.sh'

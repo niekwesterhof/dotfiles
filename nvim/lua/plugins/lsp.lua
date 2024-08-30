@@ -138,7 +138,8 @@ return { -- LSP Configuration & Plugins
       -- But for many setups, the LSP (`tsserver`) will work just fine
       tsserver = {},
       --
-
+      -- bashls = {},
+      -- basedpyrigh = {},
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},

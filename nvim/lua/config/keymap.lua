@@ -17,10 +17,10 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- KEY:  Tmux control map
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
@@ -43,7 +43,6 @@ vim.keymap.set('n', '<leader>ol', '<cmd>ObsidianLinks<CR>', { desc = 'Show Obsid
 vim.keymap.set('n', '<leader>on', '<cmd>ObsidianNew<CR>', { desc = 'Create New Note' })
 vim.keymap.set('n', '<leader>os', '<cmd>ObsidianSearch<CR>', { desc = 'Search Obsidian' })
 vim.keymap.set('n', '<leader>oq', '<cmd>ObsidianQuickSwitch<CR>', { desc = 'Quick Switch' })
-vim.keymap.set('n', '<leader>on', ':ObsidianTemplate (TEMPLATE) Daily<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>')
 
 -- NOTE: neo-tree
 vim.keymap.set('n', '<leader><Tab>', ':Neotree filesystem toggle float <CR>', { desc = 'Toggle floating Neotree' })
@@ -54,18 +53,16 @@ vim.keymap.set('n', '<leader>tt', '<cmd>lua MiniTrailspace.trim()<CR>', { desc =
 vim.keymap.set('n', '<leader>ta', '<cmd>lua MiniTrailspace.trim_all_lines()<CR>', { desc = 'Trim all trailing empty lines' })
 
 -- NOTE: hop
-vim.keymap.set('', 'f', function()
-  require('hop').hint_char1 { direction = require('hop.hint').HintDirection.directions.AFTER_CURSOR, current_line_only = true }
-end, { remap = true })
-vim.keymap.set('', 'F', function()
-  require('hop').hint_char1 { direction = require('hop.hint').HintDirection.directions.BEFORE_CURSOR, current_line_only = true }
-end, { remap = true })
-vim.keymap.set('', 't', function()
-  require('hop').hint_char1 { direction = require('hop.hint').HintDirection.directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 }
-end, { remap = true })
-vim.keymap.set('', 'T', function()
-  require('hop').hint_char1 { direction = require('hop.hint').HintDirection.directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 }
-end, { remap = true })
+-- vim.keymap.set('', 'f', function()
+--   require('hop').hint_char1 { direction = require('hop.hint').HintDirection.directions.AFTER_CURSOR, current_line_only = true }
+-- end, { remap = true })
+-- vim.keymap.set('', 'F', function()
+--   require('hop').hint_char1 { direction = require('hop.hint').HintDirection.directions.BEFORE_CURSOR, current_line_only = true }
+-- end, { remap = true })
+-- vim.keymap.set('', 't', function()
+--   require('hop').hint_char1 { direction = require('hop.hint').HintDirection.directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 }
+-- end, { remap = true })
+-- vim.keymap.set('', 'T', function()
 
 vim.keymap.set({ 'n', 'x', 'o' }, 'sC', ':HopChar1<CR>', { desc = 'Hop to 1 char' })
 vim.keymap.set({ 'n', 'x', 'o' }, 'sc', '<cmd>HopChar2<CR>', { desc = 'Hop to 2 char' })
@@ -76,6 +73,3 @@ vim.keymap.set({ 'n', 'x', 'o' }, 'sv', '<cmd>HopeVertical<CR>', { desc = 'Hop v
 vim.keymap.set({ 'n', 'x', 'o' }, 'sP', '<cmd>HopPattern<CR>', { desc = 'Hop Pattern' })
 vim.keymap.set({ 'n', 'x', 'o' }, 'sp', '<cmd>HopPasteChar1<CR>', { desc = 'Hop Paste to 1 char' })
 vim.keymap.set({ 'n', 'x', 'o' }, 'sy', '<cmd>HopYankChar1<CR>', { desc = 'Hop Yank at start char and end char' })
-
--- NOTE: Telescope
-vim.keymap.set('n', '<leader>m', ':Telescope keymaps <CR>', { desc = 'Telescope keymaps' })

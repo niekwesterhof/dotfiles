@@ -50,6 +50,15 @@ require('lazy').setup {
       lazy = '💤 ',
     },
   },
+  {
+    'vhyrro/luarocks.nvim',
+    priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
+    config = true,
+  },
+  { 'sbdchd/neoformat' },
+  { 'mg979/vim-visual-multi' },
+  { 'debugloop/telescope-undo.nvim' },
+
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   -- NOTE: Plugins can also be added by using a table,
@@ -66,6 +75,7 @@ require('lazy').setup {
   require 'plugins.debug',
   require 'plugins.indent_line',
   require 'plugins.lint',
+  require 'plugins.lazygit',
   require 'plugins.lsp',
   require 'plugins.autopairs',
   -- require 'plugins.neo-tree',
@@ -74,6 +84,9 @@ require('lazy').setup {
   require 'plugins.catppuccin',
   require 'plugins.noice',
   require 'plugins.bufferline',
+  require 'plugins.floaterm',
+
+  require 'plugins.undotree',
   require 'plugins.treesitter',
   require 'plugins.mini',
   require 'plugins.todo-comments',
@@ -94,6 +107,8 @@ require('lazy').setup {
   require 'plugins.cheatsheet',
   require 'plugins.yazi',
   -- require 'plugins.markdown',
+  require 'plugins.render-markdown',
+  require 'plugins.dadbod',
 }
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -49,9 +49,12 @@ vim.opt.splitbelow = true
 --  and `:help 'listchars'`
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+-- Sets how tap works
 vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
+--
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
 
@@ -69,4 +72,7 @@ vim.opt.hlsearch = true
 
 vim.opt.termguicolors = true
 
-vim.opt_local.conceallevel = 2
+-- vim.opt.conceallevel = 2
+vim.g.dbs = {
+  { name = 'batteries', url = 'mysql://admin:Pioneer!0811@192.168.0.100:3306/batteries' },
+}

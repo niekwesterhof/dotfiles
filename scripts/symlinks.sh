@@ -42,6 +42,7 @@ if [ -d ~/.config/nvim ]; then
 	echo nvim
 	mv ~/.config/nvim ~/old_config/nvim
 	ln -s ~/dotfiles/nvim ~/.config/nvim
+fi
 
 # symlink for superfile
 [ -d ~/.config/superfile ] && mv ~/.config/superfile ~/old_config/superfile
