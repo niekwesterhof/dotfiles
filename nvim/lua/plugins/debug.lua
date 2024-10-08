@@ -24,6 +24,7 @@ return {
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
   },
+
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
@@ -86,5 +87,26 @@ return {
 
     -- Install golang specific config
     require('dap-go').setup()
+
+    -- dap.adapters.codelldb = {
+    --   type = 'server',
+    --   -- host = '127.0.0.1',
+    --   -- port = '13000',
+    --   port = '${port}',
+    --   executable = {
+    --     command = '/home/niek/.config/nvim/extension/adapter/codelldb',
+    --     args = { '--port', '${port}' },
+    --   },
+    -- }
+    -- dap.configurations.cpp = {
+    --   name = 'Launch file',
+    --   type = 'codelldb',
+    --   request = 'launch',
+    --   program = function()
+    --     return vim.fn.input('path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    --   end,
+    --   cwd = '${workspaceFolder}',
+    --   stopOnEntry = false,
+    -- }
   end,
 }

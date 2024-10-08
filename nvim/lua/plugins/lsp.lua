@@ -170,6 +170,8 @@ return { -- LSP Configuration & Plugins
     vim.list_extend(ensure_installed, {
       'stylua',
       'prettierd', -- Used to format Lua code
+      'clangd',
+      'codelldb',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
