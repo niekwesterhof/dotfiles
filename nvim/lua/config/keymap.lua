@@ -73,3 +73,17 @@ vim.keymap.set({ 'n', 'x', 'o' }, 'sv', '<cmd>HopeVertical<CR>', { desc = 'Hop v
 vim.keymap.set({ 'n', 'x', 'o' }, 'sP', '<cmd>HopPattern<CR>', { desc = 'Hop Pattern' })
 vim.keymap.set({ 'n', 'x', 'o' }, 'sp', '<cmd>HopPasteChar1<CR>', { desc = 'Hop Paste to 1 char' })
 vim.keymap.set({ 'n', 'x', 'o' }, 'sy', '<cmd>HopYankChar1<CR>', { desc = 'Hop Yank at start char and end char' })
+
+
+-- NOTE Run Python script
+function runPython()
+  -- Save and run python script in floaterm
+  vim.cmd('w')
+  local file = vim.fn.expand('%')
+  vim.cmd('FloatermToggle')
+  vim.cmd('FloatermSend python3 '.. file)
+end
+
+vim.keymap.set({'n'},'<leader>rp', runPython, {desc = '[R]un [P]ython script'})
+vim.keymap.set({'n', 't'}, '<F12>', '<cmd>FloatermToggle<CR>', {desc = 'Toggle floaterm'})
+vim.keymap.set('n', '<leader>rc', '<cmd>:w<CR> :FloatermToggle<CR> g++ -Wall ' .. vim.fn.expand('%') .. ' -o ' .. vim.fn.expand('%:r') .. '.out && ./' .. vim.fn.expand('%:r') .. '.out<CR>', { desc = 'Build and [R]un [C]++ file' })

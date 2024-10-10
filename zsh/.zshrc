@@ -41,3 +41,6 @@ eval "$(atuin init zsh)"
 if [ -z "$TMUX" ]; then
 	{tmux attach || sh ~/dotfiles/scripts/setupTmux.sh}
 fi
+
+# Created by `pipx` on 2024-10-10 13:14:23
+export PATH="$PATH:/home/niek/.local/bin"
