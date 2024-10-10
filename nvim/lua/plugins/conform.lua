@@ -21,7 +21,7 @@ return {
         markdown = { { 'prettierd', 'prettier', stop_after_first = true } },
         erb = { 'htmlbeautifier' },
         html = { 'htmlbeautifier' },
-        bash = { 'beautysh' },
+        bash = { 'prettier', 'beautysh' },
         proto = { 'buf' },
         rust = { 'rustfmt' },
         yaml = { 'yamlfix' },
@@ -33,7 +33,7 @@ return {
       },
     }
 
-    vim.keymap.set({ 'n', 'v' }, '<leader>l', function()
+    vim.keymap.set({ 'n', 'v' }, '<leader>ff', function()
       conform.format {
         lsp_fallback = true,
         async = false,

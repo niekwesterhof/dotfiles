@@ -14,6 +14,21 @@ return { -- LSP Configuration & Plugins
     -- used for completion, annotations and signatures of Neovim apis
     { 'folke/neodev.nvim', opts = {} },
   },
+  -- {
+  --   'mfussenegger/nvim-dap-python',
+  -- -- stylua: ignore
+  -- keys = {
+  --   { "<leader>dPt", function() require('dap-python').test_method() end, desc = "Debug Method", ft = "python" },
+  --   { "<leader>dPc", function() require('dap-python').test_class() end, desc = "Debug Class", ft = "python" },
+  -- },
+  --   config = function()
+  --     if vim.fn.has 'win32' == 1 then
+  --       require('dap-python').setup(LazyVim.get_pkg_path('debugpy', '/venv/Scripts/pythonw.exe'))
+  --     else
+  --       require('dap-python').setup(LazyVim.get_pkg_path('debugpy', '/venv/bin/python'))
+  --     end
+  --   end,
+  -- },
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
@@ -137,8 +152,19 @@ return { -- LSP Configuration & Plugins
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
       tsserver = {},
+      -- python-lsp-server = {},
       --
-      -- bashls = {},
+      codelldb = {
+        cmd = {
+                program = function()
+                  vim.cmd('w')
+                  vim.cmd('g++ -debug ' .. vim.fn.expand('%') .. ' debug.out')
+                return vim.fn.getcwd() .. '/debug.out'
+        end,
+        cwd = "${workspaceFolder}",
+      },
+      },
+      bashls = {},
       -- basedpyrigh = {},
       lua_ls = {
         -- cmd = {...},
@@ -169,14 +195,22 @@ return { -- LSP Configuration & Plugins
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua',
-      'prettierd', -- Used to format Lua code
+      'prettierd', -- Used to format Lua code:
       'clangd',
       'codelldb',
+      'prettier',
+      'pyright',
+      'css-lsp',
+      'isort',
+      'debugpy',
+      'pylsp',
+      'black',
+      'pylint',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
     require('mason-lspconfig').setup {
-      ensure_installed = { 'quick_lint_js' },
+      ensure_installed = { 'quick_lint_js', 'pyright', 'bashls', 'cssls', 'html' },
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}

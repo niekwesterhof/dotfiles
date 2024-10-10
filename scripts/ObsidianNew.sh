@@ -7,7 +7,6 @@ path_Vault='/home/niek/Documents/Vault'
 array_Path=()
 start_Path="$PWD"
 
-
 printchoice(){
 	echo "choose a main Vault folder:"
 	i=0
@@ -21,7 +20,7 @@ printchoice(){
 	if ! [[ $mainfolder = [0-9] ]]; then
 		printchoice
 	fi
-	return $mainfolder
+	return "$mainfolder"
 }
 
 getchoice() {
@@ -45,7 +44,7 @@ checkSubFolder(){
 	found=0
 	for var in ${directories[@]}
 	do
-		if [ ${var} = ${args[2]} ]; then
+		if [ "${var}" = "${args[2]}" ]; then
 			found=1
 		fi
 	done
@@ -65,24 +64,24 @@ getSubFolders() {
 
 getTagsAliases() {
 	length=${#array_Path[@]}
-	if [ $length -gt 5 ]; then
+	if [ "$length" -gt 5 ]; then
 		for (( i=5; i<$length; i++ ))
 		do
 			if [ $i -eq 5 ]; then
 				obName=${array_Path[i]:5}
-				obName=`tr '\ ' '-' <<< $obName`
+				obName=$(tr '\ ' '-' <<< "$obName")
 				obClass=$obName
 				obTags="$obTags $obName"
 			else
 				obName=${array_Path[i]}
-				obName=`tr '\ ' '_' <<< $obName`
+				obName=$(tr '\ ' '_' <<< "$obName")
 				obTags="$obTags $obName"
 			fi
 		done
 	fi
 }
 getDirectories() {
-	cd "$path_Vault"
+	cd "$path_Vault" || exit
 	sleep 0.2
 	# IFS="/" read -ra directories <<< "/"
 	if [ ! -z "$(ls -A)" ]; then
@@ -90,7 +89,7 @@ getDirectories() {
 	else
 		directories=()
 	fi
-	cd "$start_Path"
+	cd "$start_Path" || exit
 }
 
 printDirectories(){
@@ -118,17 +117,17 @@ printDirectories(){
 
 createNode() {
 	obTags="$obTags ]"
-	obDate=`/bin/date +%y-%m-%d`
-	obTime=`/bin/date +%H:%M:%S`
+	obDate=$(/bin/date +%y-%m-%d)
+	obTime=$(/bin/date +%H:%M:%S)
 	obId="${args[0]}"
 	Template="---\nid: $obId\nDate: $obDate $obTime\n$obTags\ncssclasses: [ $obClass ]\n---\n\n***\n\n# "
 	path_Node="$path_Vault/${args[0]}.md"
-	echo $path_Node
+	echo "$path_Node"
 	if [ -e "$path_Node" ]; then
 		echo "File ${args[0]}.md already exists!"
 		exit 1
 	else
-		echo -e $Template >> "$path_Node"
+		echo -e "$Template" >> "$path_Node"
 		sleep 0.2
 		nvim "$path_Node"
 	fi
@@ -136,7 +135,7 @@ createNode() {
 
 #### end of functions
 
-IFS="/" read -ra array_Start <<< $PWD
+IFS="/" read -ra array_Start <<< "$PWD"
 
 # Check number of arguments given
 for var in "$@"
@@ -146,14 +145,14 @@ do
 done
 
 # Check if Help is given or no input
-if [ "$1" = "--help" ] || [ "$1" = "-h" ] || [ $args = 0 ]; then
+if [ "$1" = "--help" ] || [ "$1" = "-h" ] || [ "$args" = 0 ]; then
 	echo "fill in: filename | Main folder | subfolder 1 | subfolder ..."
 	exit 2
 fi
 
 # TODO: list all folders, with subfolders
 if [ "$2" = "-a" ] || [ "$2" = "--all" ]; then
-	cd "$path_Vault"
+	cd "$path_Vault" || exit
 
 	directories=( $(find * -maxdepth 5 -type d ) )
 	getDirectories
@@ -165,14 +164,14 @@ if [ $number_args -eq 1 ]; then
 	choice=$?
 	getchoice $choice
 	# create array of path Vault
-	IFS="/" read -ra array_Path <<< $path_Vault
+	IFS="/" read -ra array_Path <<< "$path_Vault"
 	getDirectories
 	printDirectories
 elif [ ! "$2" = "" ]; then
 	getchoice "$2"
 	getDirectories
 	# create array of path Vault
-	IFS="/" read -ra array_Path <<< $path_Vault
+	IFS="/" read -ra array_Path <<< "$path_Vault"
 	if [ ! "$3" = "" ]; then
 		path_Vault=$path_Vault/"$3"
 		checkSubFolder

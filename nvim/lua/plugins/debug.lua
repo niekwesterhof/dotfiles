@@ -23,20 +23,32 @@ return {
 
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
+
   },
 
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
 
+      dap.configurations.cpp = {
+    {
+          type = "codelldb",
+          name = 'debug',
+          request = 'launch',
+          program = function ()
+            return vim.fn.getcwd() ..'/debug.out'
+          end
+      }
+    }
+
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
       automatic_setup = true,
-
       -- You can provide additional configuration to the handlers,
       -- see mason-nvim-dap README for more information
-      handlers = {},
+      handlers = {
+              },
 
       -- You'll need to check that you have the required things installed
       -- online, please don't ask me how to install them :)
@@ -45,16 +57,24 @@ return {
         -- 'delve',
       },
     }
-
+function cpp ()
+    local name = vim.fn.expand('%')
+    vim.cmd('w')
+    vim.cmd('!g++ --debug ' .. name .. ' -o debug.out')
+    dap.continue()
+    end
     -- Basic debugging keymaps, feel free to change to your liking!
-    vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
+    vim.keymap.set('n', '<leader>dc',cpp, { desc = '[D]ebug: Build and Start [C]++' })
+    vim.keymap.set('n', '<F5>',dap.continue, { desc = 'Debug: Start/Continue' })
     vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
     vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
     vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
-    vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-    vim.keymap.set('n', '<leader>B', function()
+    vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = '[D]ebug: Toggle [B]reakpoint' })
+    vim.keymap.set('n', '<leader>dB', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-    end, { desc = 'Debug: Set Breakpoint' })
+    end, { desc = '[D]ebug: Set [B]reakpoint' })
+    vim.keymap.set('n', '<leader>dq',dapui.close, {desc = '[D]ebug [q]uit'})
+
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
@@ -87,26 +107,5 @@ return {
 
     -- Install golang specific config
     require('dap-go').setup()
-
-    -- dap.adapters.codelldb = {
-    --   type = 'server',
-    --   -- host = '127.0.0.1',
-    --   -- port = '13000',
-    --   port = '${port}',
-    --   executable = {
-    --     command = '/home/niek/.config/nvim/extension/adapter/codelldb',
-    --     args = { '--port', '${port}' },
-    --   },
-    -- }
-    -- dap.configurations.cpp = {
-    --   name = 'Launch file',
-    --   type = 'codelldb',
-    --   request = 'launch',
-    --   program = function()
-    --     return vim.fn.input('path to executable: ', vim.fn.getcwd() .. '/', 'file')
-    --   end,
-    --   cwd = '${workspaceFolder}',
-    --   stopOnEntry = false,
-    -- }
   end,
 }

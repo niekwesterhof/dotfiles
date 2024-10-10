@@ -67,6 +67,7 @@ require('lazy').setup {
 
   -- NOTE: Plugins can specify dependencies.
   require 'plugins.zoxide',
+  require 'plugins.neorunner',
   require 'plugins.breadcrumbs',
   require 'plugins.which-key',
   require 'plugins.auto-complete',
@@ -92,8 +93,9 @@ require('lazy').setup {
   require 'plugins.todo-comments',
   require 'plugins.tokyo-night',
   require 'plugins.hop',
-  require 'plugins.auto-format',
+  -- require 'plugins.auto-format',
   require 'plugins.comment',
+  require 'plugins.conform',
   -- require 'plugins.oil',
   require 'plugins.alfa-nvim',
   require 'plugins.rose-pine',

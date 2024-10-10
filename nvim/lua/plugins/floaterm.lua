@@ -8,6 +8,7 @@ return {
       { desc = 'Open FloatTerm' }
     )
     vim.keymap.set('n', '<leader>ft', '<cmd>:FloatermToggle<CR>', { desc = 'Toggle FloatTerm' })
+    vim.keymap.set('n', '<leader>rc', '<cmd>:w<CR> :FloatermToggle<CR> g++ -Wall ' .. vim.fn.expand('%') .. ' && ./a.out<CR>', { desc = 'Build and Run C++ file' })
     -- vim.keymap.set('t', '<leader>flt', '<cmd>:FloatermToggle<CR>', { desc = 'Toggle FloatTerm' })
   end,
 }
