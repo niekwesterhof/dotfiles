@@ -67,6 +67,7 @@ require('lazy').setup {
 
   -- NOTE: Plugins can specify dependencies.
   require 'plugins.zoxide',
+  require 'plugins.nerdy',
   require 'plugins.neorunner',
   require 'plugins.breadcrumbs',
   require 'plugins.which-key',

@@ -45,37 +45,26 @@ vim.keymap.set('n', '<leader>os', '<cmd>ObsidianSearch<CR>', { desc = 'Search Ob
 vim.keymap.set('n', '<leader>oq', '<cmd>ObsidianQuickSwitch<CR>', { desc = 'Quick Switch' })
 
 -- NOTE: neo-tree
-vim.keymap.set('n', '<leader><Tab>', ':Neotree filesystem toggle float <CR>', { desc = 'Toggle floating Neotree' })
-vim.keymap.set('n', '<leader>n', ':Neotree filesystem toggle left <CR>', { desc = 'Toggle neotree left' })
+-- vim.keymap.set('n', '<leader><Tab>', ':Neotree filesystem toggle float <CR>', { desc = 'Toggle floating Neotree' })
+-- vim.keymap.set('n', '<leader>n', ':Neotree filesystem toggle left <CR>', { desc = 'Toggle neotree left' })
 
 -- NOTE:  trailspace
 vim.keymap.set('n', '<leader>tt', '<cmd>lua MiniTrailspace.trim()<CR>', { desc = 'Trim all trailing whitespaces' })
 vim.keymap.set('n', '<leader>ta', '<cmd>lua MiniTrailspace.trim_all_lines()<CR>', { desc = 'Trim all trailing empty lines' })
 
 -- NOTE: hop
--- vim.keymap.set('', 'f', function()
---   require('hop').hint_char1 { direction = require('hop.hint').HintDirection.directions.AFTER_CURSOR, current_line_only = true }
--- end, { remap = true })
--- vim.keymap.set('', 'F', function()
---   require('hop').hint_char1 { direction = require('hop.hint').HintDirection.directions.BEFORE_CURSOR, current_line_only = true }
--- end, { remap = true })
--- vim.keymap.set('', 't', function()
---   require('hop').hint_char1 { direction = require('hop.hint').HintDirection.directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 }
--- end, { remap = true })
--- vim.keymap.set('', 'T', function()
-
-vim.keymap.set({ 'n', 'x', 'o' }, 'sC', ':HopChar1<CR>', { desc = 'Hop to 1 char' })
-vim.keymap.set({ 'n', 'x', 'o' }, 'sc', '<cmd>HopChar2<CR>', { desc = 'Hop to 2 char' })
-vim.keymap.set({ 'n', 'x', 'o' }, 'sw', '<cmd>HopWord<CR>', { desc = 'Hop Word' })
-vim.keymap.set({ 'n', 'x', 'o' }, 'ss', '<cmd>HopLineStart<CR>', { desc = 'Hop to line' })
-vim.keymap.set({ 'n', 'x', 'o' }, 'sl', '<cmd>HopLine<CR>', { desc = 'Hop to begin line' })
-vim.keymap.set({ 'n', 'x', 'o' }, 'sv', '<cmd>HopeVertical<CR>', { desc = 'Hop vertical' })
-vim.keymap.set({ 'n', 'x', 'o' }, 'sP', '<cmd>HopPattern<CR>', { desc = 'Hop Pattern' })
-vim.keymap.set({ 'n', 'x', 'o' }, 'sp', '<cmd>HopPasteChar1<CR>', { desc = 'Hop Paste to 1 char' })
-vim.keymap.set({ 'n', 'x', 'o' }, 'sy', '<cmd>HopYankChar1<CR>', { desc = 'Hop Yank at start char and end char' })
+vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hC', ':HopChar1<CR>', { desc = 'Hop to 1 char' })
+vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hc', '<cmd>HopChar2<CR>', { desc = 'Hop to 2 char' })
+vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hw', '<cmd>HopWord<CR>', { desc = 'Hop Word' })
+vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hs', '<cmd>HopLineStart<CR>', { desc = 'Hop to line' })
+vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hl', '<cmd>HopLine<CR>', { desc = 'Hop to begin line' })
+vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hv', '<cmd>HopeVertical<CR>', { desc = 'Hop vertical' })
+vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hP', '<cmd>HopPattern<CR>', { desc = 'Hop Pattern' })
+vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hp', '<cmd>HopPasteChar1<CR>', { desc = 'Hop Paste to 1 char' })
+vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hy', '<cmd>HopYankChar1<CR>', { desc = 'Hop Yank at start char and end char' })
 
 
--- NOTE Run Python script
+-- NOTE: Run Python script
 function runPython()
   -- Save and run python script in floaterm
   vim.cmd('w')
@@ -84,6 +73,24 @@ function runPython()
   vim.cmd('FloatermSend python3 '.. file)
 end
 
-vim.keymap.set({'n'},'<leader>rp', runPython, {desc = '[R]un [P]ython script'})
+function debugPython()
+  vim.cmd('w')
+  require('dap').continue()
+end
+
+vim.keymap.set({'n'},'<leader>dp', debugPython, {desc = 'Debug [p]ython script'})
+vim.keymap.set({'n'},'<leader>rp', runPython, {desc = 'Run [p]thon script'})
 vim.keymap.set({'n', 't'}, '<F12>', '<cmd>FloatermToggle<CR>', {desc = 'Toggle floaterm'})
 vim.keymap.set('n', '<leader>rc', '<cmd>:w<CR> :FloatermToggle<CR> g++ -Wall ' .. vim.fn.expand('%') .. ' -o ' .. vim.fn.expand('%:r') .. '.out && ./' .. vim.fn.expand('%:r') .. '.out<CR>', { desc = 'Build and [R]un [C]++ file' })
+
+-- NOTE: Group names
+vim.keymap.set('n','<leader>g','none',{desc = '+[g]it'})
+vim.keymap.set('n','<leader>s','none',{desc = '+[s]earch'})
+vim.keymap.set('n','<leader>o','none',{desc = '+[o]bsidian'})
+vim.keymap.set('n','<leader>r','none',{desc = '+[r]un' })
+vim.keymap.set('n','<leader>d','none',{desc = '+[d]ebug'})
+vim.keymap.set('n','<leader>l','none',{desc = '+[l]sp'})
+vim.keymap.set('n','<leader>h','none',{desc = '+[h]op'})
+vim.keymap.set('n','<leader>sv','none',{desc = '+[v]ault'})
+vim.keymap.set('n','<leader>gt','none',{desc = '+[t]oggle'})
+vim.keymap.set('n','<leader>n','none',{desc = '+[n]oice'})

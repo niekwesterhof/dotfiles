@@ -174,6 +174,12 @@ elif [ ! "$2" = "" ]; then
 	IFS="/" read -ra array_Path <<< "$path_Vault"
 	if [ ! "$3" = "" ]; then
 		path_Vault=$path_Vault/"$3"
+		echo $path_Vault
+		# Check if folder exist
+		if [ ! -d "$path_Vault" ]; then
+			echo 'dir does not exist'
+			mkdir $3
+		fi
 		checkSubFolder
 		getSubFolders
 	else

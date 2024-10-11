@@ -13,24 +13,27 @@ return { -- Useful plugin to show you pending keybinds.
         require('which-key').show { global = false }
       end,
       desc = 'Buffer Local Keymaps (which-key)',
+
     },
   },
   config = function() -- This is the function that runs, AFTER loading
-    require('which-key').setup {
+    local wk = require('which-key')
+    wk.setup {
       keywords = {
         FIX = { icon = ' ', color = 'error', alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE' } },
         TODO = { icon = ' ', color = 'info' },
         HACK = { icon = ' ', color = 'warning' },
         WARN = { icon = ' ', color = 'warning', alt = { 'WARNING', 'XXX' } },
-        PERF = { icon = ' ', alt = { 'OPTIM', 'PERFORMANCE', 'OPTIMIZE' } },
-        NOTE = { icon = ' ', color = 'hint', alt = { 'INFO' } },
+        PERF = { icon = '', alt = { 'OPTIM', 'PERFORMANCE', 'OPTIMIZE' } },
+        NOTE = { icon = '', color = 'hint', alt = { 'INFO' } },
         TEST = { icon = '⏲ ', color = 'test', alt = { 'TESTING', 'PASSED', 'FAILED' } },
+        COMMENT = {icon = '' , color = 'comment'}
       },
       gui_style = {
         fg = 'NONE', -- The gui style to use for the fg highlight group.
         bg = 'BOLD', -- The gui style to use for the bg highlight group.
       },
-      merge_keywords = true, -- when true, custom keywords will be merged with the defaults
+      -- merge_keywords = true, -- when true, custom keywords will be merged with the defaults
       highlight = {
         multiline = true, -- enable multine todo comments
         multiline_pattern = '^.', -- lua pattern to match the next multiline from the start of the matched keyword
@@ -51,7 +54,8 @@ return { -- Useful plugin to show you pending keybinds.
         hint = { 'DiagnosticHint', '#10B981' },
         default = { 'Identifier', '#7C3AED' },
         test = { 'Identifier', '#FF00FF' },
-      },
+        comment = {'#363d38'}
+    },
     }
   end,
 }
