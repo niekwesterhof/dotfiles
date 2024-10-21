@@ -156,13 +156,13 @@ return { -- LSP Configuration & Plugins
       --
       codelldb = {
         cmd = {
-                program = function()
-                  vim.cmd('w')
-                  vim.cmd('g++ -debug ' .. vim.fn.expand('%') .. ' debug.out')
-                return vim.fn.getcwd() .. '/debug.out'
-        end,
-        cwd = "${workspaceFolder}",
-      },
+          program = function()
+            vim.cmd 'w'
+            vim.cmd('g++ -debug ' .. vim.fn.expand '%' .. ' debug.out')
+            return vim.fn.getcwd() .. '/debug.out'
+          end,
+          cwd = '${workspaceFolder}',
+        },
       },
       bashls = {},
       -- basedpyrigh = {},
@@ -206,6 +206,7 @@ return { -- LSP Configuration & Plugins
       'pylsp',
       'black',
       'pylint',
+      'clang-format',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

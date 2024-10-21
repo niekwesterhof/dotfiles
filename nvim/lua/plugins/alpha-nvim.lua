@@ -19,13 +19,15 @@ return {
 
     dashboard.section.header.val = vim.split(logo, '\n')
     dashboard.section.buttons.val = {
-      dashboard.button('f', ' ' .. ' Find file Telescope', ':Telescope find_files <CR>'),
+      dashboard.button('f', ' ' .. ' Find file Telescope', ':Telescope find_files hidden=true <CR>'),
       dashboard.button('y', ' ' .. ' Find file Yazi', ':Yazi <CR>'),
       dashboard.button('n', ' ' .. ' New file', ':ene <BAR> startinsert <CR>'),
       dashboard.button('r', ' ' .. ' Recent files', ':Telescope oldfiles <CR>'),
       dashboard.button('g', ' ' .. ' Find text', ':Telescope live_grep <CR>'),
-      dashboard.button('s', ' ' .. 'Restore Session', '<cmd>lua require("persistence").load()<cr>'),
-      dashboard.button('c', ' ' .. ' Config', ':yazi<CR> :cd ~/.config/nvim/<CR>'),
+      dashboard.button('s', ' ' .. ' Restore Session', '<cmd>lua require("persistence").load()<CR>'),
+      dashboard.button('c', ' ' .. ' Config', ':Telescope find_files search_dirs={"~/.config/nvim/"} <CR>'),
+      dashboard.button('d', ''  .. ' Dotfiles', ':Telescope find_files hidden=true search_dirs={"~/dotfiles/"} <CR>'),
+      dashboard.button('y', ' ' .. ' Yazi', ':e ~/dotfiles/ <CR>'),
       dashboard.button('l', '󰒲 ' .. ' Lazy', ':Lazy<CR>'),
       dashboard.button('q', ' ' .. ' Quit', ':qa<CR>'),
     }

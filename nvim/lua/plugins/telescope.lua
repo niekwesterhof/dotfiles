@@ -48,11 +48,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
       -- You can put your default mappings / updates / etc. in here
       --  All the info you're looking for is in `:help telescope.setup()`
       --
-      -- defaults = {
+      defaults = {
+        file_ignore_patterns = { '.git/',}
       --   mappings = {
       --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
       --   },
-      -- },
+      },
       -- pickers = {}
       extensions = {
         ['ui-select'] = {
@@ -73,13 +74,19 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
     vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
     vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+    vim.keymap.set('n', '<leader>sd', function()
+      builtin.find_files { search_dirs = { '~/dotfiles/' }, hidden = true, prompt_title = 'Search files in dotfiles' }
+    end, { desc = '[S]earch in [d]otfiles' })
+    vim.keymap.set('n', '<leader>sa', function()
+      builtin.find_files { search_dirs = { '~/' }, hidden = true, prompt_title = 'Search all files' }
+    end, { desc = '[S]earch in all [f]iles' })
     vim.keymap.set('n', '<leader>svg', function()
-      builtin.live_grep { search_dirs = { '~/Documents/Vault' }, prompt_title = 'Search files in Vault' }
+      builtin.live_grep { search_dirs = { '~/Documents/Vault' }, prompt_title = 'Search by grep in Vault' }
     end, { desc = '[S]earch in [V]ault [G]rep' })
     vim.keymap.set('n', '<leader>svf', function()
-      builtin.find_files { search_dirs = { '~/Documents/Vault' }, prompt_title = 'Seach by Grep in Vault' }
+      builtin.find_files { search_dirs = { '~/Documents/Vault' }, prompt_title = 'Search files in Vault' }
     end, { desc = '[S]earch in [V]ault [F]iles' })
-    vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+    vim.keymap.set('n', '<leader>sD', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })

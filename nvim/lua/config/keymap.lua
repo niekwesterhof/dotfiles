@@ -63,34 +63,52 @@ vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hP', '<cmd>HopPattern<CR>', { desc = 
 vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hp', '<cmd>HopPasteChar1<CR>', { desc = 'Hop Paste to 1 char' })
 vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hy', '<cmd>HopYankChar1<CR>', { desc = 'Hop Yank at start char and end char' })
 
-
 -- NOTE: Run Python script
-function runPython()
+function RunScript()
   -- Save and run python script in floaterm
-  vim.cmd('w')
-  local file = vim.fn.expand('%')
-  vim.cmd('FloatermToggle')
-  vim.cmd('FloatermSend python3 '.. file)
+  vim.cmd 'w'
+  local file = vim.fn.expand '%'
+  vim.cmd 'FloatermToggle'
+  vim.cmd('FloatermSend ./' .. file)
 end
 
-function debugPython()
-  vim.cmd('w')
+function RunPython()
+  -- Save and run python script in floaterm
+  vim.cmd 'w'
+  local file = vim.fn.expand '%'
+  vim.cmd 'FloatermToggle'
+  vim.cmd('FloatermSend python3 ' .. file)
+end
+
+function DebugPython()
+  vim.cmd 'w'
   require('dap').continue()
 end
 
-vim.keymap.set({'n'},'<leader>dp', debugPython, {desc = 'Debug [p]ython script'})
-vim.keymap.set({'n'},'<leader>rp', runPython, {desc = 'Run [p]thon script'})
-vim.keymap.set({'n', 't'}, '<F12>', '<cmd>FloatermToggle<CR>', {desc = 'Toggle floaterm'})
-vim.keymap.set('n', '<leader>rc', '<cmd>:w<CR> :FloatermToggle<CR> g++ -Wall ' .. vim.fn.expand('%') .. ' -o ' .. vim.fn.expand('%:r') .. '.out && ./' .. vim.fn.expand('%:r') .. '.out<CR>', { desc = 'Build and [R]un [C]++ file' })
+function RunCpp()
+  vim.cmd 'w'
+  local file = vim.fn.expand '%'
+  local filewo = vim.fn.expand '%:r'
+  vim.cmd 'FloatermToggle'
+  vim.cmd('FloatermSend g++ -Wall ' .. file .. ' -o ' .. filewo .. '.out && ./' .. filewo .. '.out')
+end
+
+vim.keymap.set({ 'n' }, '<leader>rb', RunScript, { desc = 'run [b]ash Script' })
+vim.keymap.set({ 'n' }, '<leader>dp', DebugPython, { desc = 'Debug [p]ython script' })
+vim.keymap.set({ 'n' }, '<leader>rp', RunPython, { desc = 'Run [p]thon script' })
+vim.keymap.set({ 'n', 't' }, '<F12>', '<cmd>FloatermToggle<CR>', { desc = 'Toggle floaterm' })
+-- vim.keymap.set('n', '<leader>rc', '<cmd>:w<CR> :FloatermToggle<CR> g++ -Wall ' .. vim.fn.expand('%') .. ' -o ' .. vim.fn.expand('%:r') .. '.out && ./' .. vim.fn.expand('%:r') .. '.out<CR>', { desc = 'Build and [R]un [C]++ file' })
+vim.keymap.set('n', '<leader>rc', RunCpp, { desc = 'Build and [R]un [C]++ file' })
 
 -- NOTE: Group names
-vim.keymap.set('n','<leader>g','none',{desc = '+[g]it'})
-vim.keymap.set('n','<leader>s','none',{desc = '+[s]earch'})
-vim.keymap.set('n','<leader>o','none',{desc = '+[o]bsidian'})
-vim.keymap.set('n','<leader>r','none',{desc = '+[r]un' })
-vim.keymap.set('n','<leader>d','none',{desc = '+[d]ebug'})
-vim.keymap.set('n','<leader>l','none',{desc = '+[l]sp'})
-vim.keymap.set('n','<leader>h','none',{desc = '+[h]op'})
-vim.keymap.set('n','<leader>sv','none',{desc = '+[v]ault'})
-vim.keymap.set('n','<leader>gt','none',{desc = '+[t]oggle'})
-vim.keymap.set('n','<leader>n','none',{desc = '+[n]oice'})
+vim.keymap.set('n', '<leader>g', 'none', { desc = '+[g]it' })
+vim.keymap.set('n', '<leader>s', 'none', { desc = '+[s]earch' })
+vim.keymap.set('n', '<leader>o', 'none', { desc = '+[o]bsidian' })
+vim.keymap.set('n', '<leader>r', 'none', { desc = '+[r]un' })
+vim.keymap.set('n', '<leader>d', 'none', { desc = '+[d]ebug' })
+vim.keymap.set('n', '<leader>l', 'none', { desc = '+[l]sp' })
+vim.keymap.set('n', '<leader>h', 'none', { desc = '+[h]op' })
+vim.keymap.set('n', '<leader>sv', 'none', { desc = '+[v]ault' })
+vim.keymap.set('n', '<leader>gt', 'none', { desc = '+[t]oggle' })
+vim.keymap.set('n', '<leader>n', 'none', { desc = '+[n]oice' })
+vim.keymap.set('n', '<leader>t', 'none', { desc = '+[t]rim' })

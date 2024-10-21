@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
- #Path to your oh-my-zsh installation.
+#Path to your oh-my-zsh installation.
 export PATH="/bin/yazi:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
 # open up tmux with opening terminal
@@ -10,17 +10,17 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-source ~/dotfiles/aliases/.aliases
+source ~/dotfiles/aliases/aliases.sh
 
 # ~/.zshrc
 
 function yy() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
 }
 
 eval "$(starship init zsh)"
@@ -39,7 +39,7 @@ eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
 
 if [ -z "$TMUX" ]; then
-	{tmux attach || sh ~/dotfiles/scripts/setupTmux.sh}
+    {tmux attach || sh ~/dotfiles/scripts/setupTmux.sh}
 fi
 
 # Created by `pipx` on 2024-10-10 13:14:23

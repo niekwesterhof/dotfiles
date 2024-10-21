@@ -50,11 +50,11 @@ require('lazy').setup {
       lazy = '💤 ',
     },
   },
-  {
-    'vhyrro/luarocks.nvim',
-    priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
-    config = true,
-  },
+  -- {
+  --   'vhyrro/luarocks.nvim',
+  --   priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
+  --   config = true,
+  -- },
   { 'sbdchd/neoformat' },
   { 'mg979/vim-visual-multi' },
   { 'debugloop/telescope-undo.nvim' },
@@ -98,13 +98,14 @@ require('lazy').setup {
   require 'plugins.comment',
   require 'plugins.conform',
   -- require 'plugins.oil',
-  require 'plugins.alfa-nvim',
+  require 'plugins.alpha-nvim',
   require 'plugins.rose-pine',
   require 'plugins.rainbow-parentheses',
   require 'plugins.dracula',
   require 'plugins.nord',
   require 'plugins.begood',
   require 'plugins.gruvbox',
+  require 'plugins.image',
   require 'plugins.dracula',
   require 'plugins.themery',
   require 'plugins.cheatsheet',
