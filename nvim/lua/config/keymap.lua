@@ -8,10 +8,6 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagn
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
--- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
--- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
--- is not what someone will guess without a bit more experience.
---
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
@@ -35,12 +31,16 @@ vim.keymap.set('n', '<leader>nd', '<cmd>NoiceDismiss<CR>', { desc = 'Dismiss Noi
 vim.keymap.set('n', '<leader>Z', '<cmd>Z<CR>', { desc = 'Open Zoxide' })
 
 -- NOTE: Obsidian
+function ObsidianNew()
+  vim.cmd 'FloatermToggle'
+  vim.cmd 'FloatermSend ~/dotfiles/scripts/ObsidianNew.sh'
+end
+
 vim.keymap.set('n', '<leader>oc', "<cmd>lua require('obsidian').util.toggle_checkbox()<CR>", { desc = 'Obsidian Check Checkbox' })
-vim.keymap.set('n', '<leader>ot', '<cmd>ObsidianTemplate<CR>', { desc = 'Insert Obsidian Template' })
 vim.keymap.set('n', '<leader>oo', '<cmd>ObsidianOpen<CR>', { desc = 'Open in Obsidian App' })
 vim.keymap.set('n', '<leader>ob', '<cmd>ObsidianBacklinks<CR>', { desc = 'Show ObsidianBacklinks' })
 vim.keymap.set('n', '<leader>ol', '<cmd>ObsidianLinks<CR>', { desc = 'Show ObsidianLinks' })
-vim.keymap.set('n', '<leader>on', '<cmd>ObsidianNew<CR>', { desc = 'Create New Note' })
+vim.keymap.set('n', '<leader>on', ObsidianNew, { desc = 'Create New Note' })
 vim.keymap.set('n', '<leader>os', '<cmd>ObsidianSearch<CR>', { desc = 'Search Obsidian' })
 vim.keymap.set('n', '<leader>oq', '<cmd>ObsidianQuickSwitch<CR>', { desc = 'Quick Switch' })
 
@@ -97,18 +97,69 @@ vim.keymap.set({ 'n' }, '<leader>rb', RunScript, { desc = 'run [b]ash Script' })
 vim.keymap.set({ 'n' }, '<leader>dp', DebugPython, { desc = 'Debug [p]ython script' })
 vim.keymap.set({ 'n' }, '<leader>rp', RunPython, { desc = 'Run [p]thon script' })
 vim.keymap.set({ 'n', 't' }, '<F12>', '<cmd>FloatermToggle<CR>', { desc = 'Toggle floaterm' })
+vim.keymap.set({ 'n', 't' }, '<ESC><ESC>', '<cmd>FloatermKill<CR>', { desc = 'Toggle floaterm' })
 -- vim.keymap.set('n', '<leader>rc', '<cmd>:w<CR> :FloatermToggle<CR> g++ -Wall ' .. vim.fn.expand('%') .. ' -o ' .. vim.fn.expand('%:r') .. '.out && ./' .. vim.fn.expand('%:r') .. '.out<CR>', { desc = 'Build and [R]un [C]++ file' })
 vim.keymap.set('n', '<leader>rc', RunCpp, { desc = 'Build and [R]un [C]++ file' })
 
+-- NOTE: Nerdy
+vim.keymap.set('n', '<leader>nn', '<cmd>Nerdy<CR>', { desc = 'Nerd fonts' })
+
+-- NOTE: Gitsigns
+local gitsigns = require 'gitsigns'
+-- Navigation
+vim.keymap.set('n', ']c', function()
+  if vim.wo.diff then
+    vim.cmd.normal { ']c', bang = true }
+  else
+    gitsigns.nav_hunk 'next'
+  end
+end, { desc = 'Jump to next git [c]hange' })
+
+vim.keymap.set('n', '[c', function()
+  if vim.wo.diff then
+    vim.cmd.normal { '[c', bang = true }
+  else
+    gitsigns.nav_hunk 'prev'
+  end
+end, { desc = 'Jump to previous git [c]hange' })
+
+-- Actions
+-- visual mode
+vim.keymap.set('v', '<leader>gs', function()
+  gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
+end, { desc = 'stage git hunk' })
+vim.keymap.set('v', '<leader>gr', function()
+  gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
+end, { desc = 'reset git hunk' })
+-- normal mode
+vim.keymap.set('n', '<leader>gs', gitsigns.stage_hunk, { desc = 'git [s]tage hunk' })
+vim.keymap.set('n', '<leader>gr', gitsigns.reset_hunk, { desc = 'git [r]eset hunk' })
+vim.keymap.set('n', '<leader>gS', gitsigns.stage_buffer, { desc = 'git [S]tage buffer' })
+vim.keymap.set('n', '<leader>gu', gitsigns.undo_stage_hunk, { desc = 'git [u]ndo stage hunk' })
+vim.keymap.set('n', '<leader>gR', gitsigns.reset_buffer, { desc = 'git [R]eset buffer' })
+vim.keymap.set('n', '<leader>gp', gitsigns.preview_hunk, { desc = 'git [p]review hunk' })
+vim.keymap.set('n', '<leader>gb', gitsigns.blame_line, { desc = 'git [b]lame line' })
+vim.keymap.set('n', '<leader>gd', gitsigns.diffthis, { desc = 'git [d]iff against index' })
+vim.keymap.set('n', '<leader>gD', function()
+  gitsigns.diffthis '@'
+end, { desc = 'git [D]iff against last commit' })
+-- Toggles
+vim.keymap.set('n', '<leader>gtb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
+vim.keymap.set('n', '<leader>gtD', gitsigns.toggle_deleted, { desc = '[T]oggle git show [D]eleted' })
+
+-- NOTE: Git
+vim.keymap.set('n', '<leader>G', '<CMD>Git<CR>', { desc = 'Git' })
+
 -- NOTE: Group names
-vim.keymap.set('n', '<leader>g', 'none', { desc = '+[g]it' })
-vim.keymap.set('n', '<leader>s', 'none', { desc = '+[s]earch' })
-vim.keymap.set('n', '<leader>o', 'none', { desc = '+[o]bsidian' })
-vim.keymap.set('n', '<leader>r', 'none', { desc = '+[r]un' })
-vim.keymap.set('n', '<leader>d', 'none', { desc = '+[d]ebug' })
-vim.keymap.set('n', '<leader>l', 'none', { desc = '+[l]sp' })
-vim.keymap.set('n', '<leader>h', 'none', { desc = '+[h]op' })
-vim.keymap.set('n', '<leader>sv', 'none', { desc = '+[v]ault' })
-vim.keymap.set('n', '<leader>gt', 'none', { desc = '+[t]oggle' })
-vim.keymap.set('n', '<leader>n', 'none', { desc = '+[n]oice' })
-vim.keymap.set('n', '<leader>t', 'none', { desc = '+[t]rim' })
+vim.keymap.set('n', '<leader>g', 'none', { desc = '+gitsigns' })
+vim.keymap.set('n', '<leader>G', 'none', { desc = '+git' })
+vim.keymap.set('n', '<leader>s', 'none', { desc = '+search' })
+vim.keymap.set('n', '<leader>o', 'none', { desc = '+obsidian' })
+vim.keymap.set('n', '<leader>r', 'none', { desc = '+run' })
+vim.keymap.set('n', '<leader>d', 'none', { desc = '+debug' })
+vim.keymap.set('n', '<leader>l', 'none', { desc = '+lsp' })
+vim.keymap.set('n', '<leader>h', 'none', { desc = '+hop' })
+vim.keymap.set('n', '<leader>sv', 'none', { desc = '+vault' })
+vim.keymap.set('n', '<leader>gt', 'none', { desc = '+toggle' })
+vim.keymap.set('n', '<leader>n', 'none', { desc = '+noice + nerdy' })
+vim.keymap.set('n', '<leader>t', 'none', { desc = '+trim' })

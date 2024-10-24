@@ -40,7 +40,7 @@ return { -- Autocompletion
     local luasnip = require 'luasnip'
     luasnip.config.setup {}
     -- require('basedpyright').basedpyright.setup {}
-    require('lspconfig').tsserver.setup {}
+    require('lspconfig').ts_ls.setup {}
     require('lspconfig').bashls.setup {}
     cmp.setup {
       snippet = {

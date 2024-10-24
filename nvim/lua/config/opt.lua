@@ -77,3 +77,11 @@ vim.opt.termguicolors = true
 vim.g.dbs = {
   { name = 'batteries', url = 'mysql://admin:Pioneer!0811@192.168.0.100:3306/batteries' },
 }
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})

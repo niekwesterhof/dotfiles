@@ -21,6 +21,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
     -- Useful for getting pretty icons, but requires a Nerd Font.
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+    { 'desdic/agrolens.nvim' },
   },
   config = function()
     -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -49,12 +50,17 @@ return { -- Fuzzy Finder (files, lsp, etc)
       --  All the info you're looking for is in `:help telescope.setup()`
       --
       defaults = {
-        file_ignore_patterns = { '.git/',}
-      --   mappings = {
-      --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-      --   },
+        file_ignore_patterns = { '.git/' },
+        --   mappings = {
+        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+        --   },
       },
-      -- pickers = {}
+      pickers = {
+        buffers = {
+          ignore_current_buffer = true,
+          sort_lastused = true,
+        },
+      },
       extensions = {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
@@ -65,6 +71,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     -- Enable Telescope extensions if they are installed
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
+    pcall(require('telescope').load_extension, 'agrolens')
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
@@ -74,6 +81,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
     vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
     vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+    vim.keymap.set('n', '<leader>sp', function()
+      builtin.find_files { search_dirs = { '~/Documents/projects/' }, hidden = true, prompt_title = 'Search files in projects' }
+    end, { desc = '[S]earch in [p]rojects' })
     vim.keymap.set('n', '<leader>sd', function()
       builtin.find_files { search_dirs = { '~/dotfiles/' }, hidden = true, prompt_title = 'Search files in dotfiles' }
     end, { desc = '[S]earch in [d]otfiles' })
@@ -113,12 +123,21 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>sn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = '[S]earch [N]eovim config files' })
-    require('telescope').load_extension 'fzf'
 
+    require('telescope').load_extension 'fzf'
     require('telescope').load_extension 'ui-select'
     vim.g.zoxide_use_select = true
 
     require('telescope').load_extension 'undo'
     require('telescope').load_extension 'noice'
+    require('telescope').extensions = {
+      agrolens = {
+        debug = false,
+        same_type = true,
+        include_hidden_buffers = false,
+        disable_indentation = false,
+        aliases = {},
+      },
+    }
   end,
 }

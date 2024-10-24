@@ -7,8 +7,9 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
-        python = {'pylint'},
-        javascript = {'eslint_d'},
+        python = { 'pylint' },
+        -- python = { 'ruff' },
+        javascript = { 'eslint_d' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
@@ -21,6 +22,10 @@ return {
         'MD013',
         'MD007',
       }
+
+      -- lint.linters_by_ft['python'] = { 'pylint' }
+      -- require('lint').linters.pylint.args = { '--ignore=E501' }
+
       --
       -- However, note that this will enable a set of default linters,
       -- which will cause errors unless these tools are available:

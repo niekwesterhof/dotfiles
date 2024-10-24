@@ -56,13 +56,11 @@ getTagsAliases() {
         for (( i=5; i<length; i++ ))
         do
             if [ $i -eq 5 ]; then
-                echo ${array_Path[i]:5}
                 obName=${array_Path[i]:5}
                 obName=$(tr '\ ' '-' <<< "$obName")
                 obClass=$obName
                 obTags="$obTags $obName"
             else
-                echo ${array_Path[i]}
                 obName=${array_Path[i]}
                 obName=$(tr '\ ' '_' <<< "$obName")
                 obTags="$obTags $obName"
@@ -74,7 +72,7 @@ getDirectories() {
     cd "$path_Vault" || exit
     sleep 0.2
     # IFS="/" read -ra directories <<< "/"
-    if [ ! -z "$(ls -A)" ]; then
+    if [ -n "$(ls -A)" ]; then
         directories=( $(find * -maxdepth 0 -type d ) )
     else
         directories=()
@@ -91,7 +89,7 @@ printDirectories(){
             echo "[$i] $var"
             i=$((i + 1))
         done
-        read -p "Enter choice: " subfolder
+        read -rp "Enter choice: " subfolder
         if ((subfolder >= 1 && subfolder <= i)); then
             array_Path+=("${directories[(($subfolder - 1))]}")
             path_Vault="$path_Vault/${directories[(($subfolder - 1))]}"
