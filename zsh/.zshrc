@@ -28,7 +28,7 @@ eval "$(starship init zsh)"
 source ~/dotfiles/zsh/completion.zsh
 source ~/dotfiles/zsh/key-bindings.zsh
 source ~/dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
+export STARSHIP_CONFIG=~/.config/starship.toml
 # export FZF_DEFAULT_COMMAND="find . -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
 # export FZF_DEFAULT_COMMAND='--hidden --files '"'"'!.git/'"'"
 # export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
