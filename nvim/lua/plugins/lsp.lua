@@ -173,7 +173,7 @@ return { -- LSP Configuration & Plugins
           return util.root_pattern('.git', 'setup.py', 'setup.cfg', 'pyproject.toml', 'requirements.txt')(fname) or util.path.dirname(fname)
         end,
       },
-      ts_ls = {},
+      tsserver = {},
 
       codelldb = {
         cmd = {
