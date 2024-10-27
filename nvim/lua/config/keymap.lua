@@ -81,7 +81,7 @@ function RunPython()
 end
 
 function DebugPython()
-  vim.cmd 'w'
+  vim.cmd 'wa'
   require('dap').continue()
 end
 
@@ -97,8 +97,6 @@ vim.keymap.set({ 'n' }, '<leader>rb', RunScript, { desc = 'run [b]ash Script' })
 vim.keymap.set({ 'n' }, '<leader>dp', DebugPython, { desc = 'Debug [p]ython script' })
 vim.keymap.set({ 'n' }, '<leader>rp', RunPython, { desc = 'Run [p]thon script' })
 vim.keymap.set({ 'n', 't' }, '<F12>', '<cmd>FloatermToggle<CR>', { desc = 'Toggle floaterm' })
-vim.keymap.set({ 'n', 't' }, '<ESC><ESC>', '<cmd>FloatermKill<CR>', { desc = 'Toggle floaterm' })
--- vim.keymap.set('n', '<leader>rc', '<cmd>:w<CR> :FloatermToggle<CR> g++ -Wall ' .. vim.fn.expand('%') .. ' -o ' .. vim.fn.expand('%:r') .. '.out && ./' .. vim.fn.expand('%:r') .. '.out<CR>', { desc = 'Build and [R]un [C]++ file' })
 vim.keymap.set('n', '<leader>rc', RunCpp, { desc = 'Build and [R]un [C]++ file' })
 
 -- NOTE: Nerdy
@@ -150,7 +148,67 @@ vim.keymap.set('n', '<leader>gtD', gitsigns.toggle_deleted, { desc = '[T]oggle g
 -- NOTE: Git
 vim.keymap.set('n', '<leader>G', '<CMD>Git<CR>', { desc = 'Git' })
 
+-- NOTE: Telescope
+
+-- local actions = require 'telescope.actions'
+local open_with_trouble = require('trouble.sources.telescope').open
+-- Use this to add more results without clearing the trouble list
+local add_to_trouble = require('trouble.sources.telescope').add
+local to_fuzzy_refine = require('telescope.actions').to_fuzzy_refine
+local builtin = require 'telescope.builtin'
+vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
+vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
+vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
+vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>sp', function()
+  builtin.find_files { search_dirs = { '~/Documents/projects/' }, hidden = true, prompt_title = 'Search files in projects' }
+end, { desc = '[S]earch in [p]rojects' })
+vim.keymap.set('n', '<leader>sd', function()
+  builtin.find_files { search_dirs = { '~/dotfiles/' }, hidden = true, prompt_title = 'Search files in dotfiles' }
+end, { desc = '[S]earch in [d]otfiles' })
+vim.keymap.set('n', '<leader>sa', function()
+  builtin.find_files { search_dirs = { '~/' }, hidden = true, prompt_title = 'Search all files' }
+end, { desc = '[S]earch in all [f]iles' })
+vim.keymap.set('n', '<leader>svg', function()
+  builtin.live_grep { search_dirs = { '~/Documents/Vault' }, prompt_title = 'Search by grep in Vault' }
+end, { desc = '[S]earch in [V]ault [G]rep' })
+vim.keymap.set('n', '<leader>svf', function()
+  builtin.find_files { search_dirs = { '~/Documents/Vault' }, prompt_title = 'Search files in Vault' }
+end, { desc = '[S]earch in [V]ault [F]iles' })
+vim.keymap.set('n', '<leader>sD', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
+vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+
+-- Slightly advanced example of overriding default behavior and theme
+vim.keymap.set('n', '<leader>/', function()
+  -- You can pass additional configuration to Telescope to change the theme, layout, etc.
+  builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+    winblend = 10,
+    previewer = false,
+  })
+end, { desc = '[/] Fuzzily search in current buffer' })
+
+-- It's also possible to pass additional configuration options.
+--  See `:help telescope.builtin.live_grep()` for information about particular keys
+vim.keymap.set('n', '<leader>s/', function()
+  builtin.live_grep {
+    grep_open_files = true,
+    prompt_title = 'Live Grep in Open Files',
+  }
+end, { desc = '[S]earch [/] in Open Files' })
+
+-- Shortcut for searching your Neovim configuration files
+vim.keymap.set('n', '<leader>sn', function()
+  builtin.find_files { cwd = vim.fn.stdpath 'config' }
+end, { desc = '[S]earch [N]eovim config files' })
+vim.keymap.set('i', '<c-enter>', to_fuzzy_refine, { desc = 'Fuzzy refine' })
+vim.keymap.set({ 'n', 'i' }, '<c-t>', open_with_trouble, { desc = 'Telescope with Trouble' })
+
 -- NOTE: Group names
+vim.keymap.set('n', '<leader>x', 'none', { desc = '+trouble' })
 vim.keymap.set('n', '<leader>g', 'none', { desc = '+gitsigns' })
 vim.keymap.set('n', '<leader>G', 'none', { desc = '+git' })
 vim.keymap.set('n', '<leader>s', 'none', { desc = '+search' })

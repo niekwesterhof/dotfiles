@@ -1,6 +1,7 @@
 return {
   require 'plugins.symbols-outline',
   require 'plugins.singles',
+  require 'plugins.trouble',
   require 'plugins.zoxide',
   require 'plugins.nerdy',
   require 'plugins.neorunner',
@@ -43,4 +44,5 @@ return {
   require 'plugins.yazi',
   require 'plugins.render-markdown',
   require 'plugins.dadbod',
+  require 'plugins.toggleterm',
 }
