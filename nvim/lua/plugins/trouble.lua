@@ -1,6 +1,22 @@
 return {
   'folke/trouble.nvim',
-  opts = {}, -- for default options, refer to the configuration section for custom setup.
+  opts = {
+    modes = {
+      preview_float = {
+        mode = 'diagnostics',
+        preview = {
+          type = 'float',
+          relative = 'editor',
+          border = 'rounded',
+          title = 'Preview',
+          title_pos = 'center',
+          position = { 0, -2 },
+          size = { width = 0.3, height = 0.3 },
+          zindex = 200,
+        },
+      },
+    },
+  }, -- for default options, refer to the configuration section for custom setup.
   cmd = 'Trouble',
   keys = {
     {
@@ -14,12 +30,17 @@ return {
       desc = 'Buffer Diagnostics (Trouble)',
     },
     {
-      '<leader>cs',
+      '<leader>xs',
+      '<cmd>Trouble lsp_document_symbols toggle focus=false win.position=right<cr>',
+      desc = 'LSP Document Symbols (Trouble)',
+    },
+    {
+      '<leader>xS',
       '<cmd>Trouble symbols toggle focus=false<cr>',
       desc = 'Symbols (Trouble)',
     },
     {
-      '<leader>cl',
+      '<leader>xl',
       '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
       desc = 'LSP Definitions / references / ... (Trouble)',
     },

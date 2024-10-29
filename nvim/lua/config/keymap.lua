@@ -6,7 +6,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>qo', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
@@ -24,6 +24,10 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+vim.keymap.set('n', '<m-h>', '10h')
+vim.keymap.set('n', '<m-k>', '10k')
+vim.keymap.set('n', '<m-j>', '10j')
+vim.keymap.set('n', '<m-l>', '10j')
 -- NOTE: Noice Message
 vim.keymap.set('n', '<leader>nd', '<cmd>NoiceDismiss<CR>', { desc = 'Dismiss Noice Message' })
 
@@ -63,21 +67,25 @@ vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hP', '<cmd>HopPattern<CR>', { desc = 
 vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hp', '<cmd>HopPasteChar1<CR>', { desc = 'Hop Paste to 1 char' })
 vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hy', '<cmd>HopYankChar1<CR>', { desc = 'Hop Yank at start char and end char' })
 
--- NOTE: Run Python script
+-- NOTE: Run script
 function RunScript()
   -- Save and run python script in floaterm
   vim.cmd 'w'
   local file = vim.fn.expand '%'
-  vim.cmd 'FloatermToggle'
-  vim.cmd('FloatermSend ./' .. file)
+  -- vim.cmd 'FloatermToggle'
+  -- vim.cmd('FloatermSend ./' .. file)
+  vim.cmd('TermExec cmd="./' .. file '"')
 end
 
+-- NOTE: Run Python script
 function RunPython()
   -- Save and run python script in floaterm
-  vim.cmd 'w'
+  vim.cmd 'wa'
+  -- vim.cmd 'buf main.py'
   local file = vim.fn.expand '%'
-  vim.cmd 'FloatermToggle'
-  vim.cmd('FloatermSend python3 ' .. file)
+  vim.cmd 'TermExec cmd="python3 main.py"'
+  -- vim.cmd 'FloatermToggle'
+  -- vim.cmd('FloatermSend python3 ' .. file)
 end
 
 function DebugPython()
@@ -89,8 +97,9 @@ function RunCpp()
   vim.cmd 'w'
   local file = vim.fn.expand '%'
   local filewo = vim.fn.expand '%:r'
-  vim.cmd 'FloatermToggle'
-  vim.cmd('FloatermSend g++ -Wall ' .. file .. ' -o ' .. filewo .. '.out && ./' .. filewo .. '.out')
+  -- vim.cmd 'FloatermToggle'
+  -- vim.cmd('FloatermSend g++ -Wall ' .. file .. ' -o ' .. filewo .. '.out && ./' .. filewo .. '.out')
+  vim.cmd('TermExec cmd="g++ -Wall ' .. file .. ' -o ' .. filewo .. '.out && ./' .. filewo .. '.out"')
 end
 
 vim.keymap.set({ 'n' }, '<leader>rb', RunScript, { desc = 'run [b]ash Script' })
@@ -204,10 +213,33 @@ end, { desc = '[S]earch [/] in Open Files' })
 vim.keymap.set('n', '<leader>sn', function()
   builtin.find_files { cwd = vim.fn.stdpath 'config' }
 end, { desc = '[S]earch [N]eovim config files' })
-vim.keymap.set('i', '<c-enter>', to_fuzzy_refine, { desc = 'Fuzzy refine' })
+-- vim.keymap.set('i', '<c-enter>', to_fuzzy_refine, { desc = 'Fuzzy refine' })
 vim.keymap.set({ 'n', 'i' }, '<c-t>', open_with_trouble, { desc = 'Telescope with Trouble' })
 
+-- NOTE: persistance
+
+-- load the session for the current directory
+vim.keymap.set('n', '<leader>qs', function()
+  require('persistence').load()
+end, { desc = 'persistence load session from dir' })
+
+-- select a session to load
+vim.keymap.set('n', '<leader>qS', function()
+  require('persistence').select()
+end, { desc = 'persistence select session to load' })
+
+-- load the last session
+vim.keymap.set('n', '<leader>ql', function()
+  require('persistence').load { last = true }
+end, { desc = 'persistence load last session' })
+
+-- stop Persistence => session won't be saved on exit
+vim.keymap.set('n', '<leader>qd', function()
+  require('persistence').stop()
+end, { desc = "stop persistence, session won't be saved on exit" })
+
 -- NOTE: Group names
+vim.keymap.set('n', '<leader>q', 'none', { desc = '+persistence' })
 vim.keymap.set('n', '<leader>x', 'none', { desc = '+trouble' })
 vim.keymap.set('n', '<leader>g', 'none', { desc = '+gitsigns' })
 vim.keymap.set('n', '<leader>G', 'none', { desc = '+git' })

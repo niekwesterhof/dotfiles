@@ -1,5 +1,7 @@
 return {
   require 'plugins.symbols-outline',
+  -- require 'plugins.hardtime',
+  require 'plugins.persistence',
   require 'plugins.singles',
   require 'plugins.trouble',
   require 'plugins.zoxide',
