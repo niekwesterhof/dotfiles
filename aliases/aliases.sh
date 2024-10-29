@@ -40,7 +40,8 @@ alias sz='source ~/.zshrc'	# source(reload) zshrc file
 alias sb='source ~/.bachrc'	# source(reload) bashrc file
 
 # Random aliases
-alias n='nvim'
+alias n='nvim'	# nvim shortcut
+alias y='yazi'	# yazi shortcut
 alias blue="sudo apt update && sudo apt install pulseaudio"	# reinstall pulseaudio
 alias ll="ls -als"	# list with flags a l s
 alias python="python3"	# shorten python3
