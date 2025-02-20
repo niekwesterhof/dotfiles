@@ -6,7 +6,7 @@ export PATH="/bin/yazi:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
 # open up tmux with opening terminal
 export PATH="/etc/default:$PATH"
-plugins=(git)
+# plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -44,3 +44,5 @@ fi
 
 # Created by `pipx` on 2024-10-10 13:14:23
 export PATH="$PATH:/home/niek/.local/bin"
+autoload -Uz compinit
+compinit

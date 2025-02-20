@@ -1,5 +1,8 @@
 --[[ keymaps for init.lua]]
-
+vim.keymap.set('i', 'jj', '<Esc>')
+vim.api.nvim_set_keymap('n', 'QQ', ':q!<enter>', { noremap = false })
+vim.api.nvim_set_keymap('n', 'WW', ':w!<enter>', { noremap = false })
+vim.keymap.set('n', '<C-S>', ':w<enter>')
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
@@ -27,7 +30,8 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<m-h>', '10h')
 vim.keymap.set('n', '<m-k>', '10k')
 vim.keymap.set('n', '<m-j>', '10j')
-vim.keymap.set('n', '<m-l>', '10j')
+vim.keymap.set('n', '<m-l>', '10l')
+
 -- NOTE: Noice Message
 vim.keymap.set('n', '<leader>nd', '<cmd>NoiceDismiss<CR>', { desc = 'Dismiss Noice Message' })
 
@@ -105,7 +109,7 @@ end
 vim.keymap.set({ 'n' }, '<leader>rb', RunScript, { desc = 'run [b]ash Script' })
 vim.keymap.set({ 'n' }, '<leader>dp', DebugPython, { desc = 'Debug [p]ython script' })
 vim.keymap.set({ 'n' }, '<leader>rp', RunPython, { desc = 'Run [p]thon script' })
-vim.keymap.set({ 'n', 't' }, '<F12>', '<cmd>FloatermToggle<CR>', { desc = 'Toggle floaterm' })
+vim.keymap.set({ 'n', 't' }, '<leader>Tt', '<cmd>FloatermToggle<CR>', { desc = 'Toggle floaterm' })
 vim.keymap.set('n', '<leader>rc', RunCpp, { desc = 'Build and [R]un [C]++ file' })
 
 -- NOTE: Nerdy
@@ -238,18 +242,28 @@ vim.keymap.set('n', '<leader>qd', function()
   require('persistence').stop()
 end, { desc = "stop persistence, session won't be saved on exit" })
 
+-- NOTE: Yazi
+vim.keymap.set('n', '<leader>yw', 'none', { desc = ' Current Working directory' })
+vim.keymap.set('n', '<leader>yf', 'none', { desc = ' Current file' })
+vim.keymap.set('n', '<leader>yn', 'none', { desc = ' Neovim Config' })
+vim.keymap.set('n', '<leader>yd', 'none', { desc = ' Dotfiles' })
+
 -- NOTE: Group names
-vim.keymap.set('n', '<leader>q', 'none', { desc = '+persistence' })
-vim.keymap.set('n', '<leader>x', 'none', { desc = '+trouble' })
-vim.keymap.set('n', '<leader>g', 'none', { desc = '+gitsigns' })
-vim.keymap.set('n', '<leader>G', 'none', { desc = '+git' })
-vim.keymap.set('n', '<leader>s', 'none', { desc = '+search' })
-vim.keymap.set('n', '<leader>o', 'none', { desc = '+obsidian' })
-vim.keymap.set('n', '<leader>r', 'none', { desc = '+run' })
-vim.keymap.set('n', '<leader>d', 'none', { desc = '+debug' })
-vim.keymap.set('n', '<leader>l', 'none', { desc = '+lsp' })
-vim.keymap.set('n', '<leader>h', 'none', { desc = '+hop' })
-vim.keymap.set('n', '<leader>sv', 'none', { desc = '+vault' })
-vim.keymap.set('n', '<leader>gt', 'none', { desc = '+toggle' })
-vim.keymap.set('n', '<leader>n', 'none', { desc = '+noice + nerdy' })
-vim.keymap.set('n', '<leader>t', 'none', { desc = '+trim' })
+vim.keymap.set('n', '<leader>q', 'none', { desc = ' persistence' })
+vim.keymap.set('n', '<leader>x', 'none', { desc = ' trouble' })
+vim.keymap.set('n', '<leader>g', 'none', { desc = ' gitsigns' })
+vim.keymap.set('n', '<leader>G', 'none', { desc = ' git' })
+vim.keymap.set('n', '<leader>s', 'none', { desc = ' search' })
+vim.keymap.set('n', '<leader>S', 'none', { desc = ' surround' })
+vim.keymap.set('n', '<leader>o', 'none', { desc = ' obsidian' })
+vim.keymap.set('n', '<leader>r', 'none', { desc = ' run' })
+vim.keymap.set('n', '<leader>d', 'none', { desc = ' debug' })
+vim.keymap.set('n', '<leader>l', 'none', { desc = ' lsp' })
+vim.keymap.set('n', '<leader>h', 'none', { desc = ' hop' })
+vim.keymap.set('n', '<leader>v', 'none', { desc = ' vault' })
+vim.keymap.set('n', '<leader>gt', 'none', { desc = ' toggle' })
+vim.keymap.set('n', '<leader>n', 'none', { desc = ' noice + nerdy' })
+vim.keymap.set('n', '<leader>t', 'none', { desc = ' trim' })
+vim.keymap.set('n', '<leader>y', 'none', { desc = ' yazi' })
+vim.keymap.set('n', '<leader>T', 'none', { desc = ' terminal' })
+vim.keymap.set('n', '<leader>F', 'none', { desc = ' Format' })

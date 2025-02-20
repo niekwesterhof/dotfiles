@@ -7,7 +7,25 @@ return { -- Collection of various small independent plugins/modules
     --  - va)  - [V]isually select [A]round [)]paren
     --  - yinq - [Y]ank [I]nside [N]ext [']quote
     --  - ci'  - [C]hange [I]nside [']quote
-    require('mini.ai').setup { n_lines = 500 }
+    require('mini.ai').setup {
+      n_lines = 500,
+
+      mappings = {
+        -- Main textobject prefixes
+        around = 'a',
+        inside = 'i',
+
+        -- Next/last variants
+        around_next = 'an',
+        inside_next = 'in',
+        around_last = 'al',
+        inside_last = 'il',
+
+        -- Move cursor to corresponding edge of `a` textobject
+        goto_left = 'g[',
+        goto_right = 'g]',
+      },
+    }
 
     -- Add/delete/replace surroundings (brackets, quotes, etc.)
     --
@@ -26,11 +44,11 @@ return { -- Collection of various small independent plugins/modules
       mappings = {
         add = 'sa', -- Add surrounding in Normal and Visual modes
         delete = 'sd', -- Delete surrounding
-        find = 'sf', -- Find surrounding (to the right)
-        find_left = 'sF', -- Find surrounding (to the left)
-        highlight = 'sh', -- Highlight surrounding
+        find = '<leader>Sf', -- Find surrounding (to the right)
+        find_left = '<leader>SF', -- Find surrounding (to the left)
+        highlight = '<leader>Sh', -- Highlight surrounding
         replace = 'sr', -- Replace surrounding
-        update_n_lines = 'sn', -- Update `n_lines`
+        update_n_lines = '<leader>Sn', -- Update `n_lines`
 
         suffix_last = 'l', -- Suffix to search with  method
         suffix_next = 'n', -- Suffix to search with "next" method

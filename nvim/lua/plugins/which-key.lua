@@ -1,6 +1,7 @@
 return { -- Useful plugin to show you pending keybinds.
   'folke/which-key.nvim',
   event = 'VimEnter', -- Sets the loading event to 'VimEnter'
+  preset = 'helix',
   opts = {
     -- your configuration comes here
     -- or leave it empty to use the default settings
@@ -13,11 +14,10 @@ return { -- Useful plugin to show you pending keybinds.
         require('which-key').show { global = false }
       end,
       desc = 'Buffer Local Keymaps (which-key)',
-
     },
   },
   config = function() -- This is the function that runs, AFTER loading
-    local wk = require('which-key')
+    local wk = require 'which-key'
     wk.setup {
       keywords = {
         FIX = { icon = ' ', color = 'error', alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE' } },
@@ -27,7 +27,7 @@ return { -- Useful plugin to show you pending keybinds.
         PERF = { icon = '', alt = { 'OPTIM', 'PERFORMANCE', 'OPTIMIZE' } },
         NOTE = { icon = '', color = 'hint', alt = { 'INFO' } },
         TEST = { icon = '⏲ ', color = 'test', alt = { 'TESTING', 'PASSED', 'FAILED' } },
-        COMMENT = {icon = '' , color = 'comment'}
+        COMMENT = { icon = '', color = 'comment' },
       },
       gui_style = {
         fg = 'NONE', -- The gui style to use for the fg highlight group.
@@ -54,8 +54,8 @@ return { -- Useful plugin to show you pending keybinds.
         hint = { 'DiagnosticHint', '#10B981' },
         default = { 'Identifier', '#7C3AED' },
         test = { 'Identifier', '#FF00FF' },
-        comment = {'#363d38'}
-    },
+        comment = { '#363d38' },
+      },
     }
   end,
 }

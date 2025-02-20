@@ -1,0 +1,19 @@
+[manager]
+append_keymap = [
+  { on = [
+    "g",
+    "D",
+  ], run = "cd ~/Downloads", desc = "Cd to ~/Downloads" },
+  { on = [
+    "g",
+    "n",
+  ], run = "cd ~/dotfiles/nvim/", desc = "Cd to Neovim Config" },
+  { on = [
+    "g",
+    "d",
+  ], run = "cd ~/dotfiles", desc = "Cd to dotfiles" },
+  { on = [
+    "g",
+    "p",
+  ], run = "cd ~/Documents/projects/", desc = "Cd to projects" },
+]

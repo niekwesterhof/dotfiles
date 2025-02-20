@@ -128,7 +128,7 @@ return { -- LSP Configuration & Plugins
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local util = require 'lspconfig.util'
     local servers = {
-      clangd = {},
+      -- clangd = {},
       -- gopls = {},
       -- pyright = {
       --   settings = {
@@ -173,7 +173,7 @@ return { -- LSP Configuration & Plugins
           return util.root_pattern('.git', 'setup.py', 'setup.cfg', 'pyproject.toml', 'requirements.txt')(fname) or util.path.dirname(fname)
         end,
       },
-      tsserver = {},
+      -- tsserver = {},
 
       codelldb = {
         cmd = {
