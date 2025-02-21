@@ -4,6 +4,38 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
+    zen = {
+      ---@type table<string, boolean>
+      toggles = {
+        dim = true,
+        git_signs = false,
+        mini_diff_signs = false,
+        -- diagnostics = false,
+        -- inlay_hints = false,
+      },
+      show = {
+        statusline = false, -- can only be shown when using the global statusline
+        tabline = false,
+      },
+      ---@type snacks.win.Config
+      win = { style = 'zen' },
+      --- Callback when the window is opened.
+      ---@param win snacks.win
+      on_open = function(win) end,
+      --- Callback when the window is closed.
+      ---@param win snacks.win
+      on_close = function(win) end,
+      --- Options for the `Snacks.zen.zoom()`
+      ---@type snacks.zen.Config
+      zoom = {
+        toggles = {},
+        show = { statusline = true, tabline = true },
+        win = {
+          backdrop = false,
+          width = 0, -- full width
+        },
+      },
+    },
     bigfile = { enabled = true },
     dashboard = { enabled = true },
     explorer = { enabled = true },
@@ -12,6 +44,19 @@ return {
     notifier = {
       enabled = true,
       timeout = 3000,
+    },
+    terminal = {
+      wo = {
+        width = 0.6,
+        height = 0.6,
+        wo = {
+          spell = false,
+          wrap = false,
+          signcolumn = 'yes',
+          statuscolumn = ' ',
+          conceallevel = 3,
+        },
+      },
     },
     picker = { enabled = true },
     quickfile = { enabled = true },
@@ -56,7 +101,7 @@ return {
       desc = 'Command History',
     },
     {
-      '<leader>n',
+      '<leader>nh',
       function()
         Snacks.picker.notifications()
       end,
@@ -189,7 +234,7 @@ return {
       function()
         Snacks.picker.grep_word()
       end,
-      desc = 'Visual selection or word',
+      desc = 'Visual selection or wojd',
       mode = { 'n', 'x' },
     },
     -- search
@@ -435,7 +480,7 @@ return {
       desc = 'Delete Buffer',
     },
     {
-      '<leader>cR',
+      '<leader>fR',
       function()
         Snacks.rename.rename_file()
       end,
@@ -525,6 +570,7 @@ return {
         end
         vim.print = _G.dd -- Override print to use snacks for `:=` command
 
+        Snacks.util.color('rose-pine', 'main')
         -- Create some toggle mappings
         Snacks.toggle.option('spell', { name = 'Spelling' }):map '<leader>us'
         Snacks.toggle.option('wrap', { name = 'Wrap' }):map '<leader>uw'

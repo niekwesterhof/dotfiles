@@ -35,12 +35,9 @@ vim.keymap.set('n', '<m-l>', '10l')
 -- NOTE: Noice Message
 vim.keymap.set('n', '<leader>nd', '<cmd>NoiceDismiss<CR>', { desc = 'Dismiss Noice Message' })
 
--- NOTE: Open Zoxide telescope extension
-vim.keymap.set('n', '<leader>Z', '<cmd>Z<CR>', { desc = 'Open Zoxide' })
-
 -- NOTE: Obsidian
 function ObsidianNew()
-  vim.cmd 'FloatermToggle'
+  vim.cmd 'Terminal'
   vim.cmd 'FloatermSend ~/dotfiles/scripts/ObsidianNew.sh'
 end
 
@@ -51,10 +48,6 @@ vim.keymap.set('n', '<leader>ol', '<cmd>ObsidianLinks<CR>', { desc = 'Show Obsid
 vim.keymap.set('n', '<leader>on', ObsidianNew, { desc = 'Create New Note' })
 vim.keymap.set('n', '<leader>os', '<cmd>ObsidianSearch<CR>', { desc = 'Search Obsidian' })
 vim.keymap.set('n', '<leader>oq', '<cmd>ObsidianQuickSwitch<CR>', { desc = 'Quick Switch' })
-
--- NOTE: neo-tree
--- vim.keymap.set('n', '<leader><Tab>', ':Neotree filesystem toggle float <CR>', { desc = 'Toggle floating Neotree' })
--- vim.keymap.set('n', '<leader>n', ':Neotree filesystem toggle left <CR>', { desc = 'Toggle neotree left' })
 
 -- NOTE:  trailspace
 vim.keymap.set('n', '<leader>tt', '<cmd>lua MiniTrailspace.trim()<CR>', { desc = 'Trim all trailing whitespaces' })
@@ -162,41 +155,40 @@ vim.keymap.set('n', '<leader>gtD', gitsigns.toggle_deleted, { desc = '[T]oggle g
 vim.keymap.set('n', '<leader>G', '<CMD>Git<CR>', { desc = 'Git' })
 
 -- NOTE: Telescope
-
 -- local actions = require 'telescope.actions'
 local open_with_trouble = require('trouble.sources.telescope').open
 -- Use this to add more results without clearing the trouble list
 local add_to_trouble = require('trouble.sources.telescope').add
 local to_fuzzy_refine = require('telescope.actions').to_fuzzy_refine
 local builtin = require 'telescope.builtin'
-vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sp', function()
-  builtin.find_files { search_dirs = { '~/Documents/projects/' }, hidden = true, prompt_title = 'Search files in projects' }
-end, { desc = '[S]earch in [p]rojects' })
-vim.keymap.set('n', '<leader>sd', function()
-  builtin.find_files { search_dirs = { '~/dotfiles/' }, hidden = true, prompt_title = 'Search files in dotfiles' }
-end, { desc = '[S]earch in [d]otfiles' })
-vim.keymap.set('n', '<leader>sa', function()
-  builtin.find_files { search_dirs = { '~/' }, hidden = true, prompt_title = 'Search all files' }
-end, { desc = '[S]earch in all [f]iles' })
-vim.keymap.set('n', '<leader>svg', function()
-  builtin.live_grep { search_dirs = { '~/Documents/Vault' }, prompt_title = 'Search by grep in Vault' }
-end, { desc = '[S]earch in [V]ault [G]rep' })
-vim.keymap.set('n', '<leader>svf', function()
-  builtin.find_files { search_dirs = { '~/Documents/Vault' }, prompt_title = 'Search files in Vault' }
-end, { desc = '[S]earch in [V]ault [F]iles' })
-vim.keymap.set('n', '<leader>sD', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+-- vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
+-- vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
+-- vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+-- vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
+-- vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
+-- vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+-- vim.keymap.set('n', '<leader>sp', function()
+--   builtin.find_files { search_dirs = { '~/Documents/projects/' }, hidden = true, prompt_title = 'Search files in projects' }
+-- end, { desc = '[S]earch in [p]rojects' })
+-- vim.keymap.set('n', '<leader>sd', function()
+--   builtin.find_files { search_dirs = { '~/dotfiles/' }, hidden = true, prompt_title = 'Search files in dotfiles' }
+-- end, { desc = '[S]earch in [d]otfiles' })
+-- vim.keymap.set('n', '<leader>sa', function()
+--   builtin.find_files { search_dirs = { '~/' }, hidden = true, prompt_title = 'Search all files' }
+-- end, { desc = '[S]earch in all [f]iles' })
+-- vim.keymap.set('n', '<leader>svg', function()
+--   builtin.live_grep { search_dirs = { '~/Documents/Vault' }, prompt_title = 'Search by grep in Vault' }
+-- end, { desc = '[S]earch in [V]ault [G]rep' })
+-- vim.keymap.set('n', '<leader>svf', function()
+--   builtin.find_files { search_dirs = { '~/Documents/Vault' }, prompt_title = 'Search files in Vault' }
+-- end, { desc = '[S]earch in [V]ault [F]iles' })
+-- vim.keymap.set('n', '<leader>sD', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+-- vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
+-- vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
 -- Slightly advanced example of overriding default behavior and theme
-vim.keymap.set('n', '<leader>/', function()
+vim.keymap.set('n', '<leader>f/', function()
   -- You can pass additional configuration to Telescope to change the theme, layout, etc.
   builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
     winblend = 10,
@@ -245,14 +237,12 @@ end, { desc = "stop persistence, session won't be saved on exit" })
 -- NOTE: Yazi
 vim.keymap.set('n', '<leader>yw', 'none', { desc = ' Current Working directory' })
 vim.keymap.set('n', '<leader>yf', 'none', { desc = ' Current file' })
-vim.keymap.set('n', '<leader>yn', 'none', { desc = ' Neovim Config' })
-vim.keymap.set('n', '<leader>yd', 'none', { desc = ' Dotfiles' })
 
 -- NOTE: Group names
 vim.keymap.set('n', '<leader>q', 'none', { desc = ' persistence' })
 vim.keymap.set('n', '<leader>x', 'none', { desc = ' trouble' })
 vim.keymap.set('n', '<leader>g', 'none', { desc = ' gitsigns' })
-vim.keymap.set('n', '<leader>G', 'none', { desc = ' git' })
+-- vim.keymap.set('n', '<leader>G', 'none', { desc = ' git' })
 vim.keymap.set('n', '<leader>s', 'none', { desc = ' search' })
 vim.keymap.set('n', '<leader>S', 'none', { desc = ' surround' })
 vim.keymap.set('n', '<leader>o', 'none', { desc = ' obsidian' })
@@ -260,10 +250,13 @@ vim.keymap.set('n', '<leader>r', 'none', { desc = ' run' })
 vim.keymap.set('n', '<leader>d', 'none', { desc = ' debug' })
 vim.keymap.set('n', '<leader>l', 'none', { desc = ' lsp' })
 vim.keymap.set('n', '<leader>h', 'none', { desc = ' hop' })
-vim.keymap.set('n', '<leader>v', 'none', { desc = ' vault' })
+-- vim.keymap.set('n', '<leader>v', 'none', { desc = ' vault' })
 vim.keymap.set('n', '<leader>gt', 'none', { desc = ' toggle' })
 vim.keymap.set('n', '<leader>n', 'none', { desc = ' noice + nerdy' })
 vim.keymap.set('n', '<leader>t', 'none', { desc = ' trim' })
 vim.keymap.set('n', '<leader>y', 'none', { desc = ' yazi' })
 vim.keymap.set('n', '<leader>T', 'none', { desc = ' terminal' })
-vim.keymap.set('n', '<leader>F', 'none', { desc = ' Format' })
+vim.keymap.set('n', '<leader>F', 'none', { desc = ' format' })
+vim.keymap.set('n', '<leader>f', 'none', { desc = ' files' })
+vim.keymap.set('n', '<leader>b', 'none', { desc = ' buffers' })
+vim.keymap.set('n', '<leader>u', 'none', { desc = ' utils' })
