@@ -8,8 +8,8 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
-vim.keymap.set('n', '<leader>qo', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>De', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+vim.keymap.set('n', '<leader>Do', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
@@ -36,18 +36,18 @@ vim.keymap.set('n', '<m-l>', '10l')
 vim.keymap.set('n', '<leader>nd', '<cmd>NoiceDismiss<CR>', { desc = 'Dismiss Noice Message' })
 
 -- NOTE: Obsidian
-function ObsidianNew()
-  vim.cmd 'Terminal'
-  vim.cmd 'FloatermSend ~/dotfiles/scripts/ObsidianNew.sh'
-end
-
-vim.keymap.set('n', '<leader>oc', "<cmd>lua require('obsidian').util.toggle_checkbox()<CR>", { desc = 'Obsidian Check Checkbox' })
-vim.keymap.set('n', '<leader>oo', '<cmd>ObsidianOpen<CR>', { desc = 'Open in Obsidian App' })
-vim.keymap.set('n', '<leader>ob', '<cmd>ObsidianBacklinks<CR>', { desc = 'Show ObsidianBacklinks' })
-vim.keymap.set('n', '<leader>ol', '<cmd>ObsidianLinks<CR>', { desc = 'Show ObsidianLinks' })
-vim.keymap.set('n', '<leader>on', ObsidianNew, { desc = 'Create New Note' })
-vim.keymap.set('n', '<leader>os', '<cmd>ObsidianSearch<CR>', { desc = 'Search Obsidian' })
-vim.keymap.set('n', '<leader>oq', '<cmd>ObsidianQuickSwitch<CR>', { desc = 'Quick Switch' })
+-- function ObsidianNew()
+--   vim.cmd 'Terminal'
+--   vim.cmd 'FloatermSend ~/dotfiles/scripts/ObsidianNew.sh'
+-- end
+--
+-- vim.keymap.set('n', '<leader>oc', "<cmd>lua require('obsidian').util.toggle_checkbox()<CR>", { desc = 'Obsidian Check Checkbox' })
+-- vim.keymap.set('n', '<leader>oo', '<cmd>ObsidianOpen<CR>', { desc = 'Open in Obsidian App' })
+-- vim.keymap.set('n', '<leader>ob', '<cmd>ObsidianBacklinks<CR>', { desc = 'Show ObsidianBacklinks' })
+-- vim.keymap.set('n', '<leader>ol', '<cmd>ObsidianLinks<CR>', { desc = 'Show ObsidianLinks' })
+-- vim.keymap.set('n', '<leader>on', ObsidianNew, { desc = 'Create New Note' })
+-- vim.keymap.set('n', '<leader>os', '<cmd>ObsidianSearch<CR>', { desc = 'Search Obsidian' })
+-- vim.keymap.set('n', '<leader>oq', '<cmd>ObsidianQuickSwitch<CR>', { desc = 'Quick Switch' })
 
 -- NOTE:  trailspace
 vim.keymap.set('n', '<leader>tt', '<cmd>lua MiniTrailspace.trim()<CR>', { desc = 'Trim all trailing whitespaces' })
@@ -102,57 +102,57 @@ end
 vim.keymap.set({ 'n' }, '<leader>rb', RunScript, { desc = 'run [b]ash Script' })
 vim.keymap.set({ 'n' }, '<leader>dp', DebugPython, { desc = 'Debug [p]ython script' })
 vim.keymap.set({ 'n' }, '<leader>rp', RunPython, { desc = 'Run [p]thon script' })
-vim.keymap.set({ 'n', 't' }, '<leader>Tt', '<cmd>FloatermToggle<CR>', { desc = 'Toggle floaterm' })
+-- vim.keymap.set({ 'n', 't' }, '<leader>Tt', '<cmd>FloatermToggle<CR>', { desc = 'Toggle floaterm' })
 vim.keymap.set('n', '<leader>rc', RunCpp, { desc = 'Build and [R]un [C]++ file' })
 
 -- NOTE: Nerdy
 vim.keymap.set('n', '<leader>nn', '<cmd>Nerdy<CR>', { desc = 'Nerd fonts' })
 
 -- NOTE: Gitsigns
-local gitsigns = require 'gitsigns'
--- Navigation
-vim.keymap.set('n', ']c', function()
-  if vim.wo.diff then
-    vim.cmd.normal { ']c', bang = true }
-  else
-    gitsigns.nav_hunk 'next'
-  end
-end, { desc = 'Jump to next git [c]hange' })
-
-vim.keymap.set('n', '[c', function()
-  if vim.wo.diff then
-    vim.cmd.normal { '[c', bang = true }
-  else
-    gitsigns.nav_hunk 'prev'
-  end
-end, { desc = 'Jump to previous git [c]hange' })
-
--- Actions
--- visual mode
-vim.keymap.set('v', '<leader>gs', function()
-  gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
-end, { desc = 'stage git hunk' })
-vim.keymap.set('v', '<leader>gr', function()
-  gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
-end, { desc = 'reset git hunk' })
--- normal mode
-vim.keymap.set('n', '<leader>gs', gitsigns.stage_hunk, { desc = 'git [s]tage hunk' })
-vim.keymap.set('n', '<leader>gr', gitsigns.reset_hunk, { desc = 'git [r]eset hunk' })
-vim.keymap.set('n', '<leader>gS', gitsigns.stage_buffer, { desc = 'git [S]tage buffer' })
-vim.keymap.set('n', '<leader>gu', gitsigns.undo_stage_hunk, { desc = 'git [u]ndo stage hunk' })
-vim.keymap.set('n', '<leader>gR', gitsigns.reset_buffer, { desc = 'git [R]eset buffer' })
-vim.keymap.set('n', '<leader>gp', gitsigns.preview_hunk, { desc = 'git [p]review hunk' })
-vim.keymap.set('n', '<leader>gb', gitsigns.blame_line, { desc = 'git [b]lame line' })
-vim.keymap.set('n', '<leader>gd', gitsigns.diffthis, { desc = 'git [d]iff against index' })
-vim.keymap.set('n', '<leader>gD', function()
-  gitsigns.diffthis '@'
-end, { desc = 'git [D]iff against last commit' })
--- Toggles
-vim.keymap.set('n', '<leader>gtb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
-vim.keymap.set('n', '<leader>gtD', gitsigns.toggle_deleted, { desc = '[T]oggle git show [D]eleted' })
+-- local gitsigns = require 'gitsigns'
+-- -- Navigation
+-- vim.keymap.set('n', ']c', function()
+--   if vim.wo.diff then
+--     vim.cmd.normal { ']c', bang = true }
+--   else
+--     gitsigns.nav_hunk 'next'
+--   end
+-- end, { desc = 'Jump to next git [c]hange' })
+--
+-- vim.keymap.set('n', '[c', function()
+--   if vim.wo.diff then
+--     vim.cmd.normal { '[c', bang = true }
+--   else
+--     gitsigns.nav_hunk 'prev'
+--   end
+-- end, { desc = 'Jump to previous git [c]hange' })
+--
+-- -- Actions
+-- -- visual mode
+-- vim.keymap.set('v', '<leader>gs', function()
+--   gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
+-- end, { desc = 'stage git hunk' })
+-- vim.keymap.set('v', '<leader>gr', function()
+--   gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
+-- end, { desc = 'reset git hunk' })
+-- -- normal mode
+-- vim.keymap.set('n', '<leader>gs', gitsigns.stage_hunk, { desc = 'git [s]tage hunk' })
+-- vim.keymap.set('n', '<leader>gr', gitsigns.reset_hunk, { desc = 'git [r]eset hunk' })
+-- vim.keymap.set('n', '<leader>gS', gitsigns.stage_buffer, { desc = 'git [S]tage buffer' })
+-- vim.keymap.set('n', '<leader>gu', gitsigns.undo_stage_hunk, { desc = 'git [u]ndo stage hunk' })
+-- vim.keymap.set('n', '<leader>gR', gitsigns.reset_buffer, { desc = 'git [R]eset buffer' })
+-- vim.keymap.set('n', '<leader>gp', gitsigns.preview_hunk, { desc = 'git [p]review hunk' })
+-- vim.keymap.set('n', '<leader>gb', gitsigns.blame_line, { desc = 'git [b]lame line' })
+-- vim.keymap.set('n', '<leader>gd', gitsigns.diffthis, { desc = 'git [d]iff against index' })
+-- vim.keymap.set('n', '<leader>gD', function()
+--   gitsigns.diffthis '@'
+-- end, { desc = 'git [D]iff against last commit' })
+-- -- Toggles
+-- vim.keymap.set('n', '<leader>gtb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
+-- vim.keymap.set('n', '<leader>gtD', gitsigns.toggle_deleted, { desc = '[T]oggle git show [D]eleted' })
 
 -- NOTE: Git
-vim.keymap.set('n', '<leader>G', '<CMD>Git<CR>', { desc = 'Git' })
+-- vim.keymap.set('n', '<leader>G', '<CMD>Git<CR>', { desc = 'Git' })
 
 -- NOTE: Telescope
 -- local actions = require 'telescope.actions'
@@ -185,7 +185,7 @@ local builtin = require 'telescope.builtin'
 -- vim.keymap.set('n', '<leader>sD', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 -- vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
 -- vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+-- vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
 -- Slightly advanced example of overriding default behavior and theme
 vim.keymap.set('n', '<leader>f/', function()
@@ -238,25 +238,28 @@ end, { desc = "stop persistence, session won't be saved on exit" })
 vim.keymap.set('n', '<leader>yw', 'none', { desc = ' Current Working directory' })
 vim.keymap.set('n', '<leader>yf', 'none', { desc = ' Current file' })
 
+-- NOTE: Symbols-Outline
+vim.keymap.set('n', '<leader>o', '<cmd> SymbolsOutline <CR>')
+
 -- NOTE: Group names
-vim.keymap.set('n', '<leader>q', 'none', { desc = ' persistence' })
-vim.keymap.set('n', '<leader>x', 'none', { desc = ' trouble' })
-vim.keymap.set('n', '<leader>g', 'none', { desc = ' gitsigns' })
--- vim.keymap.set('n', '<leader>G', 'none', { desc = ' git' })
-vim.keymap.set('n', '<leader>s', 'none', { desc = ' search' })
-vim.keymap.set('n', '<leader>S', 'none', { desc = ' surround' })
-vim.keymap.set('n', '<leader>o', 'none', { desc = ' obsidian' })
-vim.keymap.set('n', '<leader>r', 'none', { desc = ' run' })
-vim.keymap.set('n', '<leader>d', 'none', { desc = ' debug' })
-vim.keymap.set('n', '<leader>l', 'none', { desc = ' lsp' })
-vim.keymap.set('n', '<leader>h', 'none', { desc = ' hop' })
+vim.keymap.set('n', '<leader>q', 'none', { desc = 'persistence' })
+vim.keymap.set('n', '<leader>x', 'none', { desc = 'trouble' })
+vim.keymap.set('n', '<leader>g', 'none', { desc = 'git' })
+vim.keymap.set('n', '<leader>D', 'none', { desc = 'diagnostic' })
+vim.keymap.set('n', '<leader>s', 'none', { desc = 'search' })
+vim.keymap.set('n', '<leader>S', 'none', { desc = 'surround' })
+-- vim.keymap.set('n', '<leader>o', 'none', { desc = ' obsidian' })
+vim.keymap.set('n', '<leader>r', 'none', { desc = 'run' })
+vim.keymap.set('n', '<leader>d', 'none', { desc = 'debug' })
+vim.keymap.set('n', '<leader>l', 'none', { desc = 'lsp' })
+vim.keymap.set('n', '<leader>h', 'none', { desc = 'hop' })
 -- vim.keymap.set('n', '<leader>v', 'none', { desc = ' vault' })
-vim.keymap.set('n', '<leader>gt', 'none', { desc = ' toggle' })
-vim.keymap.set('n', '<leader>n', 'none', { desc = ' noice + nerdy' })
-vim.keymap.set('n', '<leader>t', 'none', { desc = ' trim' })
-vim.keymap.set('n', '<leader>y', 'none', { desc = ' yazi' })
-vim.keymap.set('n', '<leader>T', 'none', { desc = ' terminal' })
-vim.keymap.set('n', '<leader>F', 'none', { desc = ' format' })
-vim.keymap.set('n', '<leader>f', 'none', { desc = ' files' })
-vim.keymap.set('n', '<leader>b', 'none', { desc = ' buffers' })
-vim.keymap.set('n', '<leader>u', 'none', { desc = ' utils' })
+-- vim.keymap.set('n', '<leader>gt', 'none', { desc = 'toggle' })
+vim.keymap.set('n', '<leader>n', 'none', { desc = 'noice + nerdy' })
+vim.keymap.set('n', '<leader>t', 'none', { desc = 'trim' })
+vim.keymap.set('n', '<leader>y', 'none', { desc = 'yazi' })
+vim.keymap.set('n', '<leader>T', 'none', { desc = 'terminal' })
+vim.keymap.set('n', '<leader>F', 'none', { desc = 'format' })
+vim.keymap.set('n', '<leader>f', 'none', { desc = 'files' })
+vim.keymap.set('n', '<leader>b', 'none', { desc = 'buffers' })
+vim.keymap.set('n', '<leader>u', 'none', { desc = 'utils' })

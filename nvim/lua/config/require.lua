@@ -15,10 +15,10 @@ return {
   require 'plugins.debug',
   require 'plugins.indent_line',
   require 'plugins.lint',
-  require 'plugins.lazygit',
+  -- require 'plugins.lazygit',
   require 'plugins.lsp',
   require 'plugins.autopairs',
-  require 'plugins.gitsigns',
+  -- require 'plugins.gitsigns',
   require 'plugins.lua-line', -- bottom bar
   -- require 'plugins.catppuccin', -- theme
   require 'plugins.noice',
