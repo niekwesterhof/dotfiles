@@ -235,11 +235,11 @@ vim.keymap.set('n', '<leader>qd', function()
 end, { desc = "stop persistence, session won't be saved on exit" })
 
 -- NOTE: Yazi
-vim.keymap.set('n', '<leader>yw', 'none', { desc = ' Current Working directory' })
-vim.keymap.set('n', '<leader>yf', 'none', { desc = ' Current file' })
+vim.keymap.set('n', '<leader>yw', 'none', { desc = 'Current Working directory' })
+vim.keymap.set('n', '<leader>yf', 'none', { desc = 'Current file' })
 
 -- NOTE: Symbols-Outline
-vim.keymap.set('n', '<leader>o', '<cmd> SymbolsOutline <CR>')
+vim.keymap.set('n', '<leader>o', '<cmd> SymbolsOutline <CR>', { desc = 'Symbols Outline' })
 
 -- NOTE: Group names
 vim.keymap.set('n', '<leader>q', 'none', { desc = 'persistence' })

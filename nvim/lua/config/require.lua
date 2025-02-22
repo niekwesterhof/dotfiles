@@ -32,7 +32,7 @@ return {
   require 'plugins.hop', -- hop to anywhere on the page
   require 'plugins.comment',
   require 'plugins.conform', -- beautifier
-  require 'plugins.alpha-nvim',
+  -- require 'plugins.alpha-nvim',
   require 'plugins.rose-pine',
   require 'plugins.rainbow-parentheses',
   -- require 'plugins.dracula',

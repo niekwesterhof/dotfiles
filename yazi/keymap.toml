@@ -16,4 +16,8 @@ append_keymap = [
     "g",
     "p",
   ], run = "cd ~/Documents/projects/", desc = "Cd to projects" },
+  { on = [
+    "g",
+    "v",
+  ], run = "cd ~/Documents/Vault/", desc = "Cd to Vault" },
 ]
