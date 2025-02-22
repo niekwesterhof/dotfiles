@@ -4,7 +4,7 @@ return {
   config = function()
     require('toggleterm').setup {
       size = 20,
-      open_mapping = [[<leader>TT]],
+      open_mapping = [[<c-t>]],
       hide_numbers = true, -- hide the number column in toggleterm buffers
       shade_filetypes = {},
       shade_terminals = true,
@@ -72,8 +72,8 @@ return {
       htop:toggle()
     end
 
-    vim.api.nvim_set_keymap('n', '<leader>Tz', '<cmd>lua _lazygit_toggle()<CR>', { desc = 'Lazygit Toggle', noremap = true, silent = true })
-    vim.api.nvim_set_keymap('n', '<leader>Th', '<cmd>lua _htop_toggle()<CR>', { desc = 'Htop Toggle', noremap = true, silent = true })
+    -- vim.api.nvim_set_keymap('n', '<leader>Tz', '<cmd>lua _lazygit_toggle()<CR>', { desc = 'Lazygit Toggle', noremap = true, silent = true })
+    -- vim.api.nvim_set_keymap('n', '<leader>Th', '<cmd>lua _htop_toggle()<CR>', { desc = 'Htop Toggle', noremap = true, silent = true })
     -- vim.api.nvim_set_keymap("n", "<leader>co", "<cmd>lua _bun_outdated()<CR>", { noremap = true, silent = true })
     -- vim.api.nvim_set_keymap('n', '<leader>cr', '<cmd>lua _cargo_run()<CR>', { noremap = true, silent = true })
   end,

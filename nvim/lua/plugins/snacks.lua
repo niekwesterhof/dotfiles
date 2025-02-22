@@ -107,7 +107,9 @@ return {
         },
       },
     },
-    picker = { enabled = true },
+    picker = {
+      enabled = true,
+    },
     quickfile = { enabled = true },
     scope = { enabled = true },
     scroll = { enabled = true },
@@ -122,6 +124,13 @@ return {
   keys = {
     -- Top Pickers & Explorer
     {
+      '<leader>i',
+      function()
+        Snacks.image.hover()
+      end,
+      desc = 'Show Image Under Cursor',
+    },
+    {
       '<leader><space>',
       function()
         Snacks.picker.smart()
@@ -131,7 +140,22 @@ return {
     {
       '<leader>,',
       function()
-        Snacks.picker.buffers()
+        Snacks.picker.buffers {
+          finder = 'buffers',
+          format = 'buffer',
+          hidden = false,
+          unloaded = true,
+          current = false,
+          sort_lastused = true,
+          win = {
+            input = {
+              keys = {
+                ['<c-x>'] = { 'bufdelete', mode = { 'n', 'i' } },
+              },
+            },
+            list = { keys = { ['dd'] = 'bufdelete' } },
+          },
+        }
       end,
       desc = 'Buffers',
     },
@@ -179,6 +203,47 @@ return {
       desc = 'Find Config File',
     },
     {
+      '<leader>fd',
+      function()
+        Snacks.picker.files { cwd = '~/dotfiles/' }
+      end,
+      desc = 'Find Dotfiles File',
+    },
+    {
+      '<leader>fv',
+      function()
+        Snacks.picker.files { cwd = '~/Documents/Vault/' }
+      end,
+      desc = 'Find Vault File',
+    },
+    {
+      '<leader>fk',
+      function()
+        Snacks.win {
+          file = '/home/niek/Documents/Vault/02 - Areas/nvim/nvim-keymap.md',
+          width = 0.6,
+          height = 0.8,
+          wo = {
+            spell = false,
+            wrap = false,
+            signcolumn = 'yes',
+            statuscolumn = ' ',
+            conceallevel = 3,
+            number = true,
+          },
+        }
+        Snacks.win.set_title(self, 'Nvim Keymap', 'center')
+      end,
+      desc = 'Show Keymap Vault',
+    },
+    {
+      '<leader>fp',
+      function()
+        Snacks.picker.files { cwd = '~/Documents/projects/' }
+      end,
+      desc = 'Find Projects File',
+    },
+    {
       '<leader>ff',
       function()
         Snacks.picker.files()
@@ -193,7 +258,7 @@ return {
       desc = 'Find Git Files',
     },
     {
-      '<leader>fp',
+      '<leader>fP',
       function()
         Snacks.picker.projects()
       end,
