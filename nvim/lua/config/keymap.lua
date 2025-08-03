@@ -1,7 +1,10 @@
 --[[ keymaps for init.lua]]
 vim.keymap.set('i', 'jj', '<Esc>')
 vim.api.nvim_set_keymap('n', 'QQ', ':q!<enter>', { noremap = false })
-vim.api.nvim_set_keymap('n', 'WW', ':w!<enter>', { noremap = false })
+vim.api.nvim_set_keymap('n', 'WW', ':wa<enter>', { noremap = false })
+vim.api.nvim_set_keymap('n', 'WQ', ':wq<enter>', { noremap = false })
+vim.api.nvim_set_keymap('n', 'WD', ':w|bd<enter>', { noremap = false })
+vim.api.nvim_set_keymap('n', 'ZZ', ':xa<enter>', { noremap = false })
 vim.keymap.set('n', '<C-S>', ':w<enter>')
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
@@ -29,15 +32,24 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 vim.keymap.set('n', '<m-h>', '10h')
 vim.keymap.set('n', '<m-k>', '10k')
+vim.keymap.set('n', '<m-u>', '10k')
 vim.keymap.set('n', '<m-j>', '10j')
+vim.keymap.set('n', '<m-d>', '10j')
 vim.keymap.set('n', '<m-l>', '10l')
 
 -- NOTE: Noice Message
 vim.keymap.set('n', '<leader>nd', '<cmd>NoiceDismiss<CR>', { desc = 'Dismiss Noice Message' })
 
 -- NOTE:  trailspace
-vim.keymap.set('n', '<leader>tt', '<cmd>lua MiniTrailspace.trim()<CR>', { desc = 'Trim all trailing whitespaces' })
-vim.keymap.set('n', '<leader>ta', '<cmd>lua MiniTrailspace.trim_all_lines()<CR>', { desc = 'Trim all trailing empty lines' })
+vim.keymap.set('n', '<leader>Tt', '<cmd>lua MiniTrailspace.trim()<CR>', { desc = 'Trim all trailing whitespaces' })
+vim.keymap.set('n', '<leader>Ta', '<cmd>lua MiniTrailspace.trim_all_lines()<CR>', { desc = 'Trim all trailing empty lines' })
+
+-- NOTE: Terminal
+vim.keymap.set('n', '<leader>tv', '<cmd>ToggleTerm size=100 direction=vertical<CR>', { desc = 'Terminal in vertical split' })
+vim.keymap.set('n', '<leader>th', '<cmd>ToggleTerm direction=horizontal<CR>', { desc = 'Terminal in horizontal split' })
+vim.keymap.set('n', '<leader>tf', '<cmd>ToggleTerm direction=float<CR>', { desc = 'Terminal in float' })
+vim.keymap.set('n', '<leader>tt', '<cmd>ToggleTerm direction=tap<CR>', { desc = 'Terminal in tap' })
+-- vim.keymap.set('n', '<C-t>', '<cmd>ToggleTermToggleAll<CR>', { desc = 'Terminal Toggle' })
 
 -- NOTE: hop
 vim.keymap.set({ 'n', 'x', 'o' }, 'he', ':HopChar1<CR>', { desc = 'Hop to 1 char' })
@@ -80,7 +92,7 @@ function RunPython()
   -- vim.cmd('FloatermSend python3 ' .. file)
 end
 
-function DebugPython()
+function Debug()
   vim.cmd 'wa'
   require('dap').continue()
 end
@@ -95,7 +107,7 @@ function RunCpp()
 end
 
 vim.keymap.set({ 'n' }, '<leader>rb', RunScript, { desc = 'run [b]ash Script' })
-vim.keymap.set({ 'n' }, '<leader>dp', DebugPython, { desc = 'Debug [p]ython script' })
+vim.keymap.set({ 'n' }, '<leader>ds', Debug, { desc = 'Debug script' })
 vim.keymap.set({ 'n' }, '<leader>rp', RunPython, { desc = 'Run [p]thon script' })
 -- vim.keymap.set({ 'n', 't' }, '<leader>Tt', '<cmd>FloatermToggle<CR>', { desc = 'Toggle floaterm' })
 vim.keymap.set('n', '<leader>rc', RunCpp, { desc = 'Build and [R]un [C]++ file' })

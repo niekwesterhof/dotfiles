@@ -66,6 +66,7 @@ return { -- LSP Configuration & Plugins
 
         -- WARN: This is not Goto Definition, this is Goto Declaration.
         --  For example, in C this would take you to the header.
+
         -- map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
         map('<leader>lD', vim.lsp.buf.declaration, 'Goto [D]eclaration')
 
@@ -147,16 +148,22 @@ return { -- LSP Configuration & Plugins
       --       plugins = {
       --         pylint = {
       --           event = { 'BufReadPre', 'BufNewFile' },
-      --           enabled = false,
+      --           enabled = true,
       --         },
+      --         autopep8 = { enabled = false },
+      --         yapf = { enabled = false },
       --         mccabe = { enabled = false },
       --         pyflakes = { enabled = false, maxLineLength = 100 },
       --         pycodestyle = { enabled = false, maxLineLength = 100 },
       --         flake8 = { enabled = false, maxLineLength = 100 },
+      --         pylsp_mypy = { enabled = false },
+      --         pylsp_black = { enabled = false },
+      --         pylsp_isort = { enabled = false },
       --       },
       --     },
       --   },
       -- },
+
       pyright = {
         -- on_attach = require('modules.lsp').on_attach,
         -- capabilities = capabilities,
@@ -169,10 +176,11 @@ return { -- LSP Configuration & Plugins
             },
           },
         },
-        root_dir = function(fname)
-          return util.root_pattern('.git', 'setup.py', 'setup.cfg', 'pyproject.toml', 'requirements.txt')(fname) or util.path.dirname(fname)
-        end,
+        -- root_dir = function(fname)
+        --   return util.root_pattern('.git', 'setup.py', 'setup.cfg', 'pyproject.toml', 'requirements.txt')(fname) or util.path.dirname(fname)
+        -- end,
       },
+
       -- tsserver = {},
 
       codelldb = {
@@ -186,23 +194,8 @@ return { -- LSP Configuration & Plugins
         },
       },
       shellcheck = {},
-      -- ruff = {
-      --   trace = 'messages',
-      --   init_options = {
-      --     settings = {
-      --       logLevel = 'debug',
-      --       lint = {
-      --         ignore = {
-      --           'PEP 8',
-      --           'PEP 256',
-      --           -- 'E501',
-      --         },
-      --       },
-      --     },
-      --   },
-      -- },
       bashls = {},
-      -- basedpyrigh = {},
+      -- basedpyright = {},
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
@@ -235,26 +228,30 @@ return { -- LSP Configuration & Plugins
       'prettierd',
       'clangd',
       'prettier',
-      'pyright',
+      -- 'pylsp',
+      -- 'pyright',
       'css-lsp',
-      'isort',
-      'black',
-      'pylint',
-      'flake8',
+      -- 'isort',
+      -- 'black',
+      -- 'pylint',
+      -- 'flake8',
       -- Linters
       -- 'ruff',
       'clang-format',
-      -- Debug
       'codelldb',
       'debugpy',
       'bash-debug-adapter',
       'js-debug-adapter',
       'node-debug2-adapter',
+      'quick_lint_js',
+      'bashls',
+      'cssls',
+      'html',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
     require('mason-lspconfig').setup {
-      ensure_installed = { 'quick_lint_js', 'bashls', 'cssls', 'html' },
+      ensure_installed = {},
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}

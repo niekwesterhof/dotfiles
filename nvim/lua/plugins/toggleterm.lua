@@ -32,7 +32,6 @@ return {
     })
 
     local Terminal = require('toggleterm.terminal').Terminal
-
     local htop = Terminal:new {
       cmd = 'htop',
       -- function to run on opening the terminal

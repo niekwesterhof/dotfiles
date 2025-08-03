@@ -353,6 +353,13 @@ return {
     },
     -- search
     {
+      "<leader>'",
+      function()
+        Snacks.picker.marks()
+      end,
+      desc = 'Registers',
+    },
+    {
       '<leader>"',
       function()
         Snacks.picker.registers()
@@ -505,14 +512,14 @@ return {
       function()
         Snacks.picker.lsp_definitions()
       end,
-      desc = 'Goto Definition',
+      desc = 'Goto [d]efinition',
     },
     {
       'gD',
       function()
         Snacks.picker.lsp_declarations()
       end,
-      desc = 'Goto Declaration',
+      desc = 'Goto [D]eclaration',
     },
     {
       'gr',
@@ -527,7 +534,7 @@ return {
       function()
         Snacks.picker.lsp_implementations()
       end,
-      desc = 'Goto Implementation',
+      desc = 'Goto [I]mplementation',
     },
     {
       'gy',
@@ -541,14 +548,14 @@ return {
       function()
         Snacks.picker.lsp_symbols()
       end,
-      desc = 'LSP Symbols',
+      desc = 'LSP [s]ymbols',
     },
     {
       '<leader>sS',
       function()
         Snacks.picker.lsp_workspace_symbols()
       end,
-      desc = 'LSP Workspace Symbols',
+      desc = 'LSP Workspace [S]ymbols',
     },
     -- Other
     {

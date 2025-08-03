@@ -15,9 +15,9 @@ return {
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:
       -- lint.linters_by_ft = lint.linters_by_ft or {}
-      lint.linters_by_ft['markdown'] = { 'markdownlint' }
-      local markdownlint = require('lint').linters.markdownlint
-      markdownlint.args = {
+      -- lint.linters_by_ft['markdown'] = { 'markdownlint' }
+      local markdown = require('lint').linters.markdownlint
+      markdown.args = {
         '--disable',
         'MD013',
         'MD007',
@@ -25,7 +25,13 @@ return {
 
       -- lint.linters_by_ft['python'] = { 'pylint' }
       -- require('lint').linters.pylint.args = { '--ignore=E501' }
-
+      local pytonlint = require('lint').linters.pylint
+      pytonlint.args = {
+        '--extend-select',
+        'I',
+        '--disable',
+        'MD013',
+      }
       --
       -- However, note that this will enable a set of default linters,
       -- which will cause errors unless these tools are available:

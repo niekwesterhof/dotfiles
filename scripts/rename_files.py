@@ -1,10 +1,24 @@
 import os
+import re
 
 directories: list = []
 files: list = []
 extention: list = []
 index: int = 1
 path = os.getcwd()
+
+
+def atoi(text):
+    return int(text) if text.isdigit() else text
+
+
+def natural_keys(text):
+    """
+    alist.sort(key=natural_keys) sorts in human order
+    http://nedbatchelder.com/blog/200712/human_sorting.html
+    (See Toothy's implementation in the comments)
+    """
+    return [atoi(c) for c in re.split(r"(\d+)", text)]
 
 
 def change_name():
@@ -17,7 +31,7 @@ def change_name():
         files = []
         for filename in os.listdir(os.getcwd() + "/" + name + "/"):
             files.append(filename)
-        files.sort()
+        files.sort(key=natural_keys)
         for check in files:
             if check.startswith(name + " - "):
                 x = check.split(name + " - ")

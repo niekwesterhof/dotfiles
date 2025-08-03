@@ -31,7 +31,7 @@ return {
         sh = { 'beautysh' },
         zsh = { 'beautysh' },
         go = { 'gofmt' },
-        python = { 'black' },
+        python = { 'pylint' },
         cpp = { 'clang-format' },
       },
       format_on_save = {

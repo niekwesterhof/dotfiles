@@ -1,7 +1,6 @@
 return { -- Useful plugin to show you pending keybinds.
   'folke/which-key.nvim',
   event = 'VimEnter', -- Sets the loading event to 'VimEnter'
-  preset = 'helix',
   opts = {
     -- your configuration comes here
     -- or leave it empty to use the default settings
@@ -19,6 +18,7 @@ return { -- Useful plugin to show you pending keybinds.
   config = function() -- This is the function that runs, AFTER loading
     local wk = require 'which-key'
     wk.setup {
+      preset = 'helix',
       keywords = {
         FIX = { icon = ' ', color = 'error', alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE' } },
         TODO = { icon = ' ', color = 'info' },
