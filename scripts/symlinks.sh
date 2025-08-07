@@ -2,7 +2,6 @@
 #
 # This script will symlink the dotfiles in this folder.
 
-
 # make a directory for old config files to store
 cd ~
 mkdir -p ~/old_config
@@ -29,9 +28,6 @@ mkdir -p ~/.ssh
 [ -e ~/.ssh/config ] && mv ~/.ssh/config ~/old_config/config
 ln -s ~/dotfiles/.ssh/config ~/.ssh/config
 
-# symlink for i3
-#TODO: add i3 config
-
 # symlink for lazygit
 mkdir -p ~/.config/lazygit
 [ -e ~/.config/lazygit/config.yml ] && mv ~/.config/lazygit/config.yml ~/old_config/lazy_config.yml
@@ -39,10 +35,10 @@ ln -s ~/dotfiles/lazygit/config.yml ~/.config/lazygit/config.yml
 
 # symlink for nvim
 if [ -d ~/.config/nvim ]; then
-	echo nvim
-	mv ~/.config/nvim ~/old_config/nvim
-	ln -s ~/dotfiles/nvim ~/.config/nvim
+  echo nvim
+  mv ~/.config/nvim ~/old_config/nvim
 fi
+ln -s ~/dotfiles/nvim ~/.config/nvim
 
 # symlink for superfile
 [ -d ~/.config/superfile ] && mv ~/.config/superfile ~/old_config/superfile
@@ -50,20 +46,13 @@ ln -s ~/dotfiles/superfile ~/.config/superfile
 
 # symlink for tmux
 if [ -e ~/.tmux.conf ]; then
-	echo tmux.conf
-	mv ~/.tmux.conf ~/old_config/.tmux.conf
-	ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
+  echo tmux.conf
+  mv ~/.tmux.conf ~/old_config/.tmux.conf
 fi
-
-# symlink for ulauncher
-if [ -d ~/.config/ulauncher ]; then
-	echo ulauncher
-	mv ~/.config/ulauncher ~/old_files/ulauncher
-	ln -s ~/dotfiles/ulauncher ~/.config/ulauncher
-fi
+ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 
 # symlink for yazi
 if [ -d ~/.config/yazi ]; then
-	rm -r ~/.config/yazi
-	ln -s ~/dotfiles/yazi ~/.config/yazi
+  rm -r ~/.config/yazi
 fi
+ln -s ~/dotfiles/yazi ~/.config/yazi
