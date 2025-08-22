@@ -10,9 +10,9 @@ tmux rename-window NeoVim
 tmux send-keys -t - 'nvim' C-m
 tmux new-window
 tmux rename-window SecondBrain
-tmux send-keys -t 0 'z Vault' C-m
+tmux send-keys -t 0 'z vault' C-m
 tmux send-keys -t 0 'clear' C-m
-tmux send-keys -t 0 'l' C-m
+tmux send-keys -t 0 'lsa' C-m
 tmux new-window
 tmux rename-window Yazi
 tmux split-pane -h

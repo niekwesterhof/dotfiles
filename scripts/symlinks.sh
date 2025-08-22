@@ -35,7 +35,6 @@ ln -s ~/dotfiles/lazygit/config.yml ~/.config/lazygit/config.yml
 
 # symlink for nvim
 if [ -d ~/.config/nvim ]; then
-  echo nvim
   mv ~/.config/nvim ~/old_config/nvim
 fi
 ln -s ~/dotfiles/nvim ~/.config/nvim
@@ -46,7 +45,6 @@ ln -s ~/dotfiles/superfile ~/.config/superfile
 
 # symlink for tmux
 if [ -e ~/.tmux.conf ]; then
-  echo tmux.conf
   mv ~/.tmux.conf ~/old_config/.tmux.conf
 fi
 ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf

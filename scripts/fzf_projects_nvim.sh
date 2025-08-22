@@ -1,10 +1,10 @@
 #!/bin/bash
 
 currentPWD=${PWD}
-cd ~/Documents/projects || exit
-file=$(fzf --bind 'start:reload:rg --hidden --files --glob "!.git"' --preview="batcat --color=always --style=numbers {}")
+cd ~/Documents/Projects || exit
+file=$(fzf --bind 'start:reload:rg --hidden --files --glob "!.git"' --preview="bat --color=always --style=numbers {}")
 if [[ -z "$file" ]]; then
-    exit
+  exit
 fi
 nvim "$file"
 cd "${currentPWD}" || exit

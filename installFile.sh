@@ -18,6 +18,8 @@ tmux
 tmux source-file ~/.tmux.conf
 ~/.tmux/plugins/tpm/bin/install_plugins
 
+# install bat
+sudo apt install bat
 # get dotfile repo
 cd ~
 git clone https://github.com/niekwesterhof/dotfiles ~/
@@ -29,7 +31,10 @@ wget https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64
 # chmod +x ./nvim-linux-x86_64.appimage
 ./nvim-linux-x86_64.appimage --appimage-extract
 sudo mv nvim-linux-x86_64.appimage /usr/local/bin/nvim
-./squashfs-root/usr/bin/nvim
+
+wget https://github.com/neovim/neovim/releases/download/v0.11.3/nvim-linux-x86_64.tar.gz
+tar xzvf nvim-linux-x86_64.tar.gz
+
 # install starship
 curl -sS https://starship.rs/install.sh | sh -y
 

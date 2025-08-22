@@ -37,7 +37,7 @@ alias ra='~/dotfiles/scripts/alias.sh'     # run alias scrips
 
 # Source files
 alias sz='source ~/.zshrc'  # source(reload) zshrc file
-alias sb='source ~/.bachrc' # source(reload) bashrc file
+alias sb='source ~/.bashrc' # source(reload) bashrc file
 
 # Random aliases
 alias n='nvim'                                                                     # nvim shortcut
@@ -53,3 +53,5 @@ alias s='bash ~/dotfiles/scripts/allScript.sh'                            # run 
 alias r='bash ~/dotfiles/scripts/runScript.sh'                            # run runScript (execute a program)
 alias f='bash ~/dotfiles/scripts/findScript.sh'                           # run findScript (find a file in a folder)
 alias o='bash ~/dotfiles/scripts/openScript.sh'                           # run openScript (find and open file)
+alias nuv='bash ~/dotfiles/scripts/setup_uv.sh'                           # new uv env setup
+alias batcat='bat'
