@@ -23,22 +23,23 @@ tmux select-window -t Main
 tmux select-pane -t 0
 tmux send-keys -t 0 'neofetch' C-m
 
-# tmux new-session -d -s ssh
-# tmux rename-session ssh
-# tmux rename-window ssh
-# tmux send-keys -t 0 'ssh proxmox'
+tmux new-session -d -s ssh
+tmux rename-session ssh
+tmux rename-window ssh
+tmux send-keys -t 0 'ssh proxmox'
 # tmux split-pane -h
 # tmux send-keys -t 1 'ssh Arch'
 #
-# tmux new-session -d -s Batteries
-# tmux rename-session Batteries
-# tmux rename-window Main
-# tmux send-keys -t 0 'cd ~/Documents/projects/batteries' C-m
+tmux new-session -d -s Projects
+tmux rename-session Projects
+tmux rename-window Main
+tmux send-keys -t 0 'cd ~/Documents/Projects/' C-m
+tmux send-keys -t 0 'lsa' C-m
 # tmux send-keys -t 0 'nvim database.js server.js public/js/main.js' C-m
-# tmux split-pane -h
-# tmux resize-pane -t 0 -x "85%"
+tmux split-pane -h
+tmux resize-pane -t 0 -x "85%"
 # tmux send-keys -t 1 'cd ~/Documents/projects/batteries' C-m
 # tmux send-keys -t 1 'nodemon server.js'
-# tmux select-pane -t 0
+tmux select-pane -t 0
 #
 tmux attach -t Niek
