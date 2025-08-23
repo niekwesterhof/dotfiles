@@ -4,10 +4,12 @@ alias cb="nvim ~/.bashrc"                     # open config file bashrc
 alias ct="nvim ~/.tmux.conf"                  # open config file tmux.conf
 alias ca="nvim ~/dotfiles/aliases/aliases.sh" # open script aliases
 alias cn="nvim ~/.config/nvim/init.lua"       # open Nvim config file init.lua
+alias cnl="nvim ~/.config/nvim/lua/"          # open Nvim config lua
 alias co="nvim ~/.oh-my-zsh"                  # open on my zsh config
 
 # Create new
-alias on='~/dotfiles/scripts/ObsidianNew.sh' # Create new Obsidian Note
+alias non='python ~/dotfiles/scripts/newObsidianNote.py' # Create new Obsidian Note
+alias nuv='~/dotfiles/scripts/setup_uv.sh'               # new uv env setup
 
 # Find files with FzF
 alias fc='~/dotfiles/scripts/fzf_current.sh'  # Fuzzy find in current directory
@@ -17,27 +19,27 @@ alias fd='~/dotfiles/scripts/fzf_dotfiles.sh' # Fuzzy find in dotfiles
 alias fp='~/dotfiles/scripts/fzf_projects.sh' # Fuzzy find in projects
 
 # Fuzzy find and open in Nvim
-alias fn='~/dotfiles/scripts/fzf_current_nvim.sh'   # fuzzy find in current directory and open in Nvim
-alias fan='~/dotfiles/scripts/fzf_all_nvim.sh'      # Fuzzy find in all files and open in Nvim
-alias fon='~/dotfiles/scripts/fzf_vault_nvim.sh'    # Fuzzy find in Obsidian Vault and open in Nvim
-alias fdn='~/dotfiles/scripts/fzf_dotfiles_nvim.sh' # Fuzzy find in dotfiles and open in Nvim
-alias fpn='~/dotfiles/scripts/fzf_projects_nvim.sh' # Fuzzy find in projects and open in Nvim
+alias oc='~/dotfiles/scripts/fzf_current_nvim.sh'  # fuzzy find in current directory and open in Nvim
+alias oa='~/dotfiles/scripts/fzf_all_nvim.sh'      # Fuzzy find in all files and open in Nvim
+alias oo='~/dotfiles/scripts/fzf_vault_nvim.sh'    # Fuzzy find in Obsidian Vault and open in Nvim
+alias od='~/dotfiles/scripts/fzf_dotfiles_nvim.sh' # Fuzzy find in dotfiles and open in Nvim
+alias op='~/dotfiles/scripts/fzf_projects_nvim.sh' # Fuzzy find in projects and open in Nvim
 
 # Open Nvim with Telescope
-alias ngd='~/dotfiles/scripts/telescope_live_grep_dotfiles.sh'  # search in dotfiles with Live Grep
-alias ngo='~/dotfiles/scripts/telescope_live_grep_vault.sh'     # search in Obsidian Vault with Live Grep
-alias nfd='~/dotfiles/scripts/telescope_find_files_dotfiles.sh' # search in dotfiles with Find Files
-alias nfo='~/dotfiles/scripts/telescope_find_files_vault.sh'    # search in Obsidian Vault with Find Files
-alias nf='~/dotfiles/scripts/telescope_find_files.sh'           # search in current directory
-alias nfp='~/dotfiles/scripts/telescope_find_files_projects.sh' # search in projects with Find Files
+alias goc='~/dotfiles/scripts/grep_fzf_current_nvim.sh'  # search with Grep in current directory and open in Nvim
+alias goa='~/dotfiles/scripts/grep_fzf_all_nvim.sh'      # search with Grep in all and open in Nvim
+alias goo='~/dotfiles/scripts/grep_fzf_vault_nvim.sh'    # search with Grep in Obsidian Vault and open in Nvim
+alias god='~/dotfiles/scripts/grep_fzf_dotfiles_nvim.sh' # search with Grep in dotfiles and open in Nvim
+alias gop='~/dotfiles/scripts/grep_fzf_projects.sh'      # search with Grep in projects and open in Nvim
 
 # Run Script
 alias rt='~/dotfiles/scripts/setupTmux.sh' # run Tmux setup script
 alias ra='~/dotfiles/scripts/alias.sh'     # run alias scrips
 
 # Source files
-alias sz='source ~/.zshrc'  # source(reload) zshrc file
-alias sb='source ~/.bashrc' # source(reload) bashrc file
+alias sz='source ~/.zshrc'               # source(reload) zshrc file
+alias sb='source ~/.bashrc'              # source(reload) bashrc file
+alias st='tmux source-file ~/.tmux.conf' # source(reload) tmux.conf file
 
 # Random aliases
 alias n='nvim'                                                                     # nvim shortcut
@@ -47,11 +49,7 @@ alias ll="ls -al"                                                               
 alias l="g --icons --table --table-style=unicode --time --perm --size -a --header" # list with g with table and flags a and l
 alias lt="g --tree --level=2 --long --icons --git --table --table-style=unicode --header"
 alias python="python3"                                                    # shorten python3
+alias p="uv run"                                                          # shorten uv run
 alias dotfiles="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME" # dotfiles placeholder
-alias c='clear'                                                           # clear terminal screen
-alias s='bash ~/dotfiles/scripts/allScript.sh'                            # run allScript
-alias r='bash ~/dotfiles/scripts/runScript.sh'                            # run runScript (execute a program)
-alias f='bash ~/dotfiles/scripts/findScript.sh'                           # run findScript (find a file in a folder)
-alias o='bash ~/dotfiles/scripts/openScript.sh'                           # run openScript (find and open file)
-alias nuv='bash ~/dotfiles/scripts/setup_uv.sh'                           # new uv env setup
-alias batcat='bat'
+alias cl='clear'                                                          # clear terminal screen
+alias m='python ~/dotfiles/scripts/menu.py'
