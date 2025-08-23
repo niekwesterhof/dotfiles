@@ -1,0 +1,262 @@
+[
+  {
+    "name": "pymodbus",
+    "url": "https://pymodbus.readthedocs.io/en/latest/",
+    "description": "A full Modbus protocol implementation for Python, supporting client and server communication over TCP, UDP, and serial."
+  },
+  {
+    "name": "pyright",
+    "url": "https://pypi.org/project/pyright/",
+    "description": "A fast static type checker for Python, providing type checking and IntelliSense for Python projects."
+  },
+  {
+    "name": "numpy",
+    "url": "https://numpy.org/doc/",
+    "description": "Numerical computing library, arrays and math functions"
+  },
+  {
+    "name": "pandas",
+    "url": "https://pandas.pydata.org/docs/",
+    "description": "Data analysis and manipulation library"
+  },
+  {
+    "name": "matplotlib",
+    "url": "https://matplotlib.org/stable/contents.html",
+    "description": "Plotting and visualization library"
+  },
+  {
+    "name": "seaborn",
+    "url": "https://seaborn.pydata.org/",
+    "description": "Statistical data visualization built on matplotlib"
+  },
+  {
+    "name": "scipy",
+    "url": "https://docs.scipy.org/doc/scipy/",
+    "description": "Scientific computing library, linear algebra, optimization"
+  },
+  {
+    "name": "requests",
+    "url": "https://docs.python-requests.org/en/latest/",
+    "description": "HTTP library for sending requests"
+  },
+  {
+    "name": "flask",
+    "url": "https://flask.palletsprojects.com/en/latest/",
+    "description": "Lightweight web framework"
+  },
+  {
+    "name": "django",
+    "url": "https://docs.djangoproject.com/en/stable/",
+    "description": "Full-stack web framework"
+  },
+  {
+    "name": "fastapi",
+    "url": "https://fastapi.tiangolo.com/",
+    "description": "Modern, fast API framework"
+  },
+  {
+    "name": "sqlalchemy",
+    "url": "https://docs.sqlalchemy.org/en/20/",
+    "description": "SQL toolkit and ORM"
+  },
+  {
+    "name": "pytest",
+    "url": "https://docs.pytest.org/en/latest/",
+    "description": "Testing framework"
+  },
+  {
+    "name": "pylint",
+    "url": "https://pylint.pycqa.org/en/latest/",
+    "description": "Python code linter"
+  },
+  {
+    "name": "black",
+    "url": "https://black.readthedocs.io/en/stable/",
+    "description": "Code formatter"
+  },
+  {
+    "name": "jupyter",
+    "url": "https://jupyter.org/documentation",
+    "description": "Interactive notebooks for data science"
+  },
+  {
+    "name": "plotly",
+    "url": "https://plotly.com/python/",
+    "description": "Interactive visualization library"
+  },
+  {
+    "name": "pydantic",
+    "url": "https://docs.pydantic.dev/latest/",
+    "description": "Data validation using Python type annotations"
+  },
+  {
+    "name": "tqdm",
+    "url": "https://tqdm.github.io/",
+    "description": "Progress bars for loops"
+  },
+  {
+    "name": "beautifulsoup4",
+    "url": "https://www.crummy.com/software/BeautifulSoup/bs4/doc/",
+    "description": "HTML and XML parsing library"
+  },
+  {
+    "name": "lxml",
+    "url": "https://lxml.de/",
+    "description": "Fast XML and HTML parsing library"
+  },
+  {
+    "name": "scikit-learn",
+    "url": "https://scikit-learn.org/stable/",
+    "description": "Machine learning library"
+  },
+  {
+    "name": "tensorflow",
+    "url": "https://www.tensorflow.org/api_docs",
+    "description": "Deep learning library"
+  },
+  {
+    "name": "torch",
+    "url": "https://pytorch.org/docs/stable/index.html",
+    "description": "PyTorch deep learning library"
+  },
+  {
+    "name": "keras",
+    "url": "https://keras.io/",
+    "description": "High-level deep learning API"
+  },
+  {
+    "name": "opencv-python",
+    "url": "https://docs.opencv.org/4.x/",
+    "description": "Computer vision library"
+  },
+  {
+    "name": "sympy",
+    "url": "https://docs.sympy.org/latest/index.html",
+    "description": "Symbolic mathematics library"
+  },
+  {
+    "name": "networkx",
+    "url": "https://networkx.org/documentation/stable/",
+    "description": "Graph and network analysis"
+  },
+  {
+    "name": "scrapy",
+    "url": "https://docs.scrapy.org/en/latest/",
+    "description": "Web scraping framework"
+  },
+  {
+    "name": "selenium",
+    "url": "https://www.selenium.dev/documentation/",
+    "description": "Browser automation library"
+  },
+  {
+    "name": "requests-html",
+    "url": "https://requests-html.kennethreitz.org/",
+    "description": "HTML parsing and scraping"
+  },
+  {
+    "name": "python-dotenv",
+    "url": "https://saurabh-kumar.com/python-dotenv/",
+    "description": "Read environment variables from .env files"
+  },
+  {
+    "name": "httpx",
+    "url": "https://www.python-httpx.org/",
+    "description": "Modern HTTP client supporting async"
+  },
+  {
+    "name": "click",
+    "url": "https://click.palletsprojects.com/",
+    "description": "Command-line interface creation toolkit"
+  },
+  {
+    "name": "typer",
+    "url": "https://typer.tiangolo.com/",
+    "description": "CLI library based on type hints"
+  },
+  {
+    "name": "rich",
+    "url": "https://rich.readthedocs.io/en/stable/",
+    "description": "Rich text, tables, progress bars in terminal"
+  },
+  {
+    "name": "loguru",
+    "url": "https://loguru.readthedocs.io/en/stable/",
+    "description": "Simpler logging for Python"
+  },
+  {
+    "name": "schedule",
+    "url": "https://schedule.readthedocs.io/en/stable/",
+    "description": "Job scheduling library"
+  },
+  {
+    "name": "arrow",
+    "url": "https://arrow.readthedocs.io/en/latest/",
+    "description": "Better datetime library"
+  },
+  {
+    "name": "pendulum",
+    "url": "https://pendulum.eustace.io/docs/",
+    "description": "Improved datetime handling"
+  },
+  {
+    "name": "faker",
+    "url": "https://faker.readthedocs.io/en/master/",
+    "description": "Generate fake data for testing"
+  },
+  {
+    "name": "pytest-django",
+    "url": "https://pytest-django.readthedocs.io/en/latest/",
+    "description": "Pytest support for Django"
+  },
+  {
+    "name": "pytest-flask",
+    "url": "https://pytest-flask.readthedocs.io/en/latest/",
+    "description": "Pytest support for Flask"
+  },
+  {
+    "name": "httpie",
+    "url": "https://httpie.io/docs",
+    "description": "Command-line HTTP client"
+  },
+  {
+    "name": "jsonschema",
+    "url": "https://python-jsonschema.readthedocs.io/en/stable/",
+    "description": "Validate JSON schemas"
+  },
+  {
+    "name": "marshmallow",
+    "url": "https://marshmallow.readthedocs.io/en/stable/",
+    "description": "Object serialization/deserialization"
+  },
+  {
+    "name": "python-multipart",
+    "url": "https://www.encode.io/multipart/",
+    "description": "Multipart form-data parsing"
+  },
+  {
+    "name": "aiohttp",
+    "url": "https://docs.aiohttp.org/en/stable/",
+    "description": "Async HTTP client/server framework"
+  },
+  {
+    "name": "fastapi-users",
+    "url": "https://frankie567.github.io/fastapi-users/",
+    "description": "User management for FastAPI"
+  },
+  {
+    "name": "orjson",
+    "url": "https://pypi.org/project/orjson/",
+    "description": "Ultra fast JSON library"
+  },
+  {
+    "name": "uvicorn",
+    "url": "https://www.uvicorn.org/",
+    "description": "ASGI server for async frameworks"
+  },
+  {
+    "name": "starlette",
+    "url": "https://www.starlette.io/",
+    "description": "Lightweight ASGI framework for async web apps"
+  }
+]

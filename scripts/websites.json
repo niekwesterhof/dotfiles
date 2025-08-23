@@ -1,0 +1,43 @@
+[
+  {
+    "name": "Sonarr",
+    "url": "https://sonarr.niekhomeserver.nl",
+    "description": "Sonarr is an open-source PVR that automatically finds, downloads, organizes, and manages TV shows"
+  },
+  {
+    "name": "Radarr",
+    "url": "http://radarr.niekhomeserver.nl",
+    "description": "Radarr is an open-source PVR that automatically finds, downloads, organizes, and manages Movies"
+  },
+  {
+    "name": "Proxmox",
+    "url": "http://proxmox.niekhomeserver.nl",
+    "description": "Proxmox is an open-source virtualization and container management platform that combines KVM, LXC, software-defined storage"
+  },
+  {
+    "name": "Home Assistant",
+    "url": "http://home.niekhomeserver.nl",
+    "description": "Home Assistant automates your house"
+  },
+  {
+    "name": "NZBGet",
+    "url": "http://nzbget.niekhomeserver.nl",
+    "description": "NZBGet downloads nzb files"
+  },
+  {
+    "name": "Pi Hole",
+    "url": "http://pihole.niekhomeserver.nl",
+    "description": ""
+  },
+  {
+    "name": "Omada",
+    "url": "http://omada.niekhomeserver.nl",
+    "description": ""
+  },
+  {
+    "name": "Dashboard Icons",
+    "url": "https://dashboardicons.com/",
+    "description": ""
+  }
+]
+

@@ -5,7 +5,6 @@ alias ct="nvim ~/.tmux.conf"                  # open config file tmux.conf
 alias ca="nvim ~/dotfiles/aliases/aliases.sh" # open script aliases
 alias cn="nvim ~/.config/nvim/init.lua"       # open Nvim config file init.lua
 alias cnl="nvim ~/.config/nvim/lua/"          # open Nvim config lua
-alias co="nvim ~/.oh-my-zsh"                  # open on my zsh config
 
 # Create new
 alias non='python ~/dotfiles/scripts/newObsidianNote.py' # Create new Obsidian Note
@@ -52,4 +51,6 @@ alias python="python3"                                                    # shor
 alias p="uv run"                                                          # shorten uv run
 alias dotfiles="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME" # dotfiles placeholder
 alias cl='clear'                                                          # clear terminal screen
-alias m='python ~/dotfiles/scripts/menu.py'
+alias m='python ~/dotfiles/scripts/menu.py'                               # Menu for all aliases
+alias l="python ~/dotfiles/scripts/launcher.py"                           # Launches websites in ozone wayland
+alias man="python ~/dotfiles/scripts/man.py"                              # Launches websites man docs in ozone wayland
